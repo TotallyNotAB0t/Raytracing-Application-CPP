@@ -4,8 +4,6 @@
 #include "Vector.h"
 #include "Point.h"
 
-
-
 int main() {
     Vector test(1, 2, 3);
     Vector testt = test + test;
