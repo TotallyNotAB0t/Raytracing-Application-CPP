@@ -2,7 +2,7 @@
 // Created by pierr on 26-Apr-23.
 //
 
-#include "Vector.h"
+#include "../include/Vector.h"
 
 Vector::Vector() {
     this->x = 0;

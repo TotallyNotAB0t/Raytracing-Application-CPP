@@ -2,7 +2,7 @@
 // Created by pierr on 10-May-23.
 //
 
-#include "Matrix.h"
+#include "../include/Matrix.h"
 #include <utility>
 
 Matrix::Matrix(int rows, int cols, int val){

@@ -2,7 +2,7 @@
 // Created by pierr on 10-May-23.
 //
 
-#include "Ray.h"
+#include "../include/Ray.h"
 
 Ray::Ray() {
     this->origin = Point();
@@ -42,6 +42,7 @@ Ray& Ray::operator=(Ray &&r) noexcept {
         this->origin = r.origin;
         this->vector = r.vector;
     }
+    return *this;
 }
 
 Ray::~Ray() {

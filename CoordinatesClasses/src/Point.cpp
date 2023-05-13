@@ -2,7 +2,7 @@
 // Created by pierr on 26-Apr-23.
 //
 
-#include "Point.h"
+#include "../include/Point.h"
 
 Point::Point() {
     this->x = 0;

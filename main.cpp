@@ -1,8 +1,13 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
-#include "stb_image_write.h"
-#include <iostream>
-#include "Vector.h"
-#include "Point.h"
+
+#include <vector>
+#include "lib/include/stb_image_write.h"
+#include "Objects/include/InstantiableObject.h"
+#include "CoordinatesClasses/include/Vector.h"
+#include "CoordinatesClasses/include/Point.h"
+#include "Objects/include/ObjectUtiliy.h"
+#include "Objects/include/Sphere.h"
+#include "Objects/include/Plane.h"
 
 int main() {
     Vector test(1, 2, 3);
@@ -34,6 +39,21 @@ int main() {
     stbi_write_jpg("output.jpg", width, height, channels, image_data, 100);
 
     delete[] image_data;
+
+    // Object creation test
+    std::string filename = "test_objects.txt";
+    std::vector<InstantiableObject*> objects = ObjectUtility::createObjectsFromFile(filename);
+
+    for(const auto& obj : objects){
+        if (Sphere* sphere = dynamic_cast<Sphere*>(obj)) {
+            std::cout << "Sphere position: (" << sphere->position[0] << ", "
+                      << sphere->position[1] << ", " << sphere->position[2] << ")" << std::endl;
+        }
+        if (Plane* plane = dynamic_cast<Plane*>(obj)){
+            std::cout << "Plane position width " << plane->width << " height : " << plane->height << " position : "
+            << plane->position[0] << " " << plane->position[1] << " " << plane->position[2] << std::endl;
+        }
+    }
 
     return 0;
 }
