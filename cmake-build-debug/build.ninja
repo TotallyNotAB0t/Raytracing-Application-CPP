@@ -55,17 +55,59 @@ build CMakeFiles/RTX.dir/main.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/D
   OBJECT_DIR = CMakeFiles\RTX.dir
   OBJECT_FILE_DIR = CMakeFiles\RTX.dir
 
-build CMakeFiles/RTX.dir/Vector.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Vector.cpp || cmake_object_order_depends_target_RTX
-  DEP_FILE = CMakeFiles\RTX.dir\Vector.cpp.obj.d
+build CMakeFiles/RTX.dir/CoordinatesClasses/src/Vector.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/CoordinatesClasses/src/Vector.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\CoordinatesClasses\src\Vector.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\RTX.dir
-  OBJECT_FILE_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\CoordinatesClasses\src
 
-build CMakeFiles/RTX.dir/Point.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Point.cpp || cmake_object_order_depends_target_RTX
-  DEP_FILE = CMakeFiles\RTX.dir\Point.cpp.obj.d
+build CMakeFiles/RTX.dir/CoordinatesClasses/src/Point.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/CoordinatesClasses/src/Point.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\CoordinatesClasses\src\Point.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\RTX.dir
-  OBJECT_FILE_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\CoordinatesClasses\src
+
+build CMakeFiles/RTX.dir/CoordinatesClasses/src/Ray.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/CoordinatesClasses/src/Ray.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\CoordinatesClasses\src\Ray.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\CoordinatesClasses\src
+
+build CMakeFiles/RTX.dir/CoordinatesClasses/src/Matrix.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/CoordinatesClasses/src/Matrix.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\CoordinatesClasses\src\Matrix.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\CoordinatesClasses\src
+
+build CMakeFiles/RTX.dir/Objects/src/Sphere.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Objects/src/Sphere.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Objects\src\Sphere.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Objects\src
+
+build CMakeFiles/RTX.dir/Objects/src/ObjectUtility.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Objects/src/ObjectUtility.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Objects\src\ObjectUtility.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Objects\src
+
+build CMakeFiles/RTX.dir/Objects/src/Plane.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Objects/src/Plane.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Objects\src\Plane.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Objects\src
+
+build CMakeFiles/RTX.dir/CoordinatesClasses/src/HPoint.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/CoordinatesClasses/src/HPoint.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\CoordinatesClasses\src\HPoint.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\CoordinatesClasses\src
+
+build CMakeFiles/RTX.dir/CoordinatesClasses/src/HVector.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/CoordinatesClasses/src/HVector.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\CoordinatesClasses\src\HVector.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\CoordinatesClasses\src
 
 
 # =============================================================================
@@ -75,7 +117,7 @@ build CMakeFiles/RTX.dir/Point.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/
 #############################################
 # Link the executable RTX.exe
 
-build RTX.exe: CXX_EXECUTABLE_LINKER__RTX_Debug CMakeFiles/RTX.dir/main.cpp.obj CMakeFiles/RTX.dir/Vector.cpp.obj CMakeFiles/RTX.dir/Point.cpp.obj
+build RTX.exe: CXX_EXECUTABLE_LINKER__RTX_Debug CMakeFiles/RTX.dir/main.cpp.obj CMakeFiles/RTX.dir/CoordinatesClasses/src/Vector.cpp.obj CMakeFiles/RTX.dir/CoordinatesClasses/src/Point.cpp.obj CMakeFiles/RTX.dir/CoordinatesClasses/src/Ray.cpp.obj CMakeFiles/RTX.dir/CoordinatesClasses/src/Matrix.cpp.obj CMakeFiles/RTX.dir/Objects/src/Sphere.cpp.obj CMakeFiles/RTX.dir/Objects/src/ObjectUtility.cpp.obj CMakeFiles/RTX.dir/Objects/src/Plane.cpp.obj CMakeFiles/RTX.dir/CoordinatesClasses/src/HPoint.cpp.obj CMakeFiles/RTX.dir/CoordinatesClasses/src/HVector.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\RTX.dir
@@ -90,7 +132,7 @@ build RTX.exe: CXX_EXECUTABLE_LINKER__RTX_Debug CMakeFiles/RTX.dir/main.cpp.obj 
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\pierr\Downloads\Cours\Cpp\RTX\cmake-build-debug && C:\Users\pierr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.8109.222\bin\cmake\win\x64\bin\cmake.exe -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D C:\Users\pierr\Downloads\Cours\Cpp\RTX\cmake-build-debug && C:\Users\pierr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -101,7 +143,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\pierr\Downloads\Cours\Cpp\RTX\cmake-build-debug && C:\Users\pierr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.8109.222\bin\cmake\win\x64\bin\cmake.exe --regenerate-during-build -SC:\Users\pierr\Downloads\Cours\Cpp\RTX -BC:\Users\pierr\Downloads\Cours\Cpp\RTX\cmake-build-debug"
+  COMMAND = cmd.exe /C "cd /D C:\Users\pierr\Downloads\Cours\Cpp\RTX\cmake-build-debug && C:\Users\pierr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe --regenerate-during-build -SC:\Users\pierr\Downloads\Cours\Cpp\RTX -BC:\Users\pierr\Downloads\Cours\Cpp\RTX\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -130,14 +172,14 @@ build all: phony RTX.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCXXInformation.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeRCInformation.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-CXX.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-windres.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/WindowsPaths.cmake C$:/Users/pierr/Downloads/Cours/Cpp/RTX/CMakeLists.txt CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeCXXCompiler.cmake CMakeFiles/3.25.2/CMakeRCCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCXXInformation.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeRCInformation.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-CXX.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-windres.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/WindowsPaths.cmake C$:/Users/pierr/Downloads/Cours/Cpp/RTX/CMakeLists.txt CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeCXXCompiler.cmake CMakeFiles/3.25.2/CMakeRCCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCXXInformation.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeRCInformation.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-CXX.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-windres.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.8109.222/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/WindowsPaths.cmake C$:/Users/pierr/Downloads/Cours/Cpp/RTX/CMakeLists.txt CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeCXXCompiler.cmake CMakeFiles/3.25.2/CMakeRCCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake: phony
+build C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCXXInformation.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeRCInformation.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-CXX.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-windres.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows.cmake C$:/Users/pierr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/WindowsPaths.cmake C$:/Users/pierr/Downloads/Cours/Cpp/RTX/CMakeLists.txt CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeCXXCompiler.cmake CMakeFiles/3.25.2/CMakeRCCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake: phony
 
 
 #############################################

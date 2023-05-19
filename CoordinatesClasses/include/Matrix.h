@@ -4,6 +4,9 @@
 
 #ifndef RTX_MATRIX_H
 #define RTX_MATRIX_H
+#include "iostream"
+#include "HPoint.h"
+#include "HVector.h"
 
 class Matrix{
 private:
@@ -25,6 +28,21 @@ public:
     int& operator()(int i,int j);
     int operator[](int index) const;
     int operator()(int i,int j) const;
+    friend std::ostream& operator<<(std::ostream& os, const Matrix& m);
+
+    //Inversion part
+    static void getCfactor(const Matrix& M, Matrix& t, int p, int q, int n);
+
+    static int DET(const Matrix& M, int n);
+
+    static void ADJ(const Matrix& M, Matrix& adj);
+
+    static bool INV(const Matrix& M, Matrix& inv);
+
+    Matrix operator*(const Matrix& other) const;
+    Matrix operator*(const HPoint& point) const;
+    Matrix operator*(const HVector& point) const;
+
 };
 
 #endif //RTX_MATRIX_H
