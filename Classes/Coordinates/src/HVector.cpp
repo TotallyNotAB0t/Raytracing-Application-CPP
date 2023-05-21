@@ -9,20 +9,11 @@ HVector::HVector() : x(0), y(0), z(0), w(1) {}
 
 HVector::HVector(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
 
-float HVector::getX() const {
-    return x;
-}
-
-float HVector::getY() const {
-    return y;
-}
-
-float HVector::getZ() const {
-    return z;
-}
-
-float HVector::getW() const {
-    return w;
+HVector::HVector(const Vector &vector) {
+    this->x = vector.x;
+    this->y = vector.y;
+    this->z = vector.z;
+    this->w = 0;
 }
 
 HVector HVector::operator+(const HVector& vector) const {
@@ -67,3 +58,5 @@ std::ostream& operator<<(std::ostream& os, const HVector& vector) {
 }
 
 HVector::~HVector() {}
+
+

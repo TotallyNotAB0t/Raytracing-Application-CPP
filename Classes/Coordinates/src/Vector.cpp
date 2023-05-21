@@ -93,6 +93,10 @@ float Vector::dot(const Vector& v) const {
     return this->x * v.x + this->y * v.y + this->z * v.z;
 }
 
+float Vector::dot(const Point& p) const {
+    return this->x * p.x + this->y * p.y + this->z * p.z;
+}
+
 Vector Vector::operator-() const {
     return Vector(-this->x, -this->y, -this->z);
 }
@@ -113,7 +117,25 @@ Vector Vector::operator/(float val) const {
     return Vector(this->x / val, this->y / val, this->z / val);
 }
 
+Vector operator*(const Vector& v, float scalar) {
+    return Vector(v.x * scalar, v.y * scalar, v.z * scalar);
+}
+
 std::ostream& operator<<(std::ostream &os, const Vector &v) {
     os << "X : " << v.x << ", " << "Y : " << v.y << ", " << "Z : " << v.z << '.' << std::endl;
     return os;
+}
+
+Vector::Vector(Point point) {
+    this->x = point.x;
+    this->y = point.y;
+    this->z = point.z;
+}
+
+float Vector::vlength() const {
+    return sqrt(x * x + y * y + z * z);
+}
+
+Vector operator*(float val, const Vector &v) {
+    return Vector(val * v.x, val * v.y, val * v.z);
 }

@@ -33,18 +33,9 @@ std::ostream& operator<<(std::ostream& os, const HPoint& point) {
 
 HPoint::~HPoint() {}
 
-float HPoint::getX() const {
-    return x;
-}
-
-float HPoint::getY() const {
-    return y;
-}
-
-float HPoint::getZ() const {
-    return z;
-}
-
-float HPoint::getW() const {
-    return w;
+HPoint::HPoint(const Point &point) {
+    this->x = point.x;
+    this->y = point.y;
+    this->z = point.z;
+    this->w = 1;
 }

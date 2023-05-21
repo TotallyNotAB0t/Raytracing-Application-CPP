@@ -4,8 +4,8 @@
 #include "../include/InstantiableObject.h"
 #include <fstream>
 #include <iostream>
-#include "../include/Sphere.h"
-#include "../include/Plane.h"
+#include "../include/SphereObj.h"
+#include "../include/PlaneObj.h"
 #include "../include/ObjectUtiliy.h"
 
 std::vector<InstantiableObject*> ObjectUtility::createObjectsFromFile(const std::string& filename) {
@@ -23,13 +23,13 @@ std::vector<InstantiableObject*> ObjectUtility::createObjectsFromFile(const std:
             float radius, posX, posY, posZ;
             file >> radius >> posX >> posY >> posZ;
             Vector position(posX, posY, posZ);
-            objects.push_back(new Sphere(radius, position));
-        } else if (objectType == "Plane") {
+            objects.push_back(new SphereObj(radius, position));
+        } else if (objectType == "PlaneObj") {
             int width, height;
             float posX, posY, posZ;
             file >> width >> height >> posX >> posY >> posZ;
             Vector position(posX, posY, posZ);
-            objects.push_back(new Plane(width, height, position));
+            objects.push_back(new PlaneObj(width, height, position));
         } else {
             std::cerr << "Unknown object type: " << objectType << std::endl;
         }

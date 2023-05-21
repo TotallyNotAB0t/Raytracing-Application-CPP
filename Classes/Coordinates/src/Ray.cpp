@@ -45,6 +45,16 @@ Ray& Ray::operator=(Ray &&r) noexcept {
     return *this;
 }
 
+Ray Ray::normalized() const {
+    Ray r(*this);
+    float length = r.vector.vlength();
+    if (length > 0) {
+        r.vector = r.vector / length;
+        r.origin = r.origin / length;
+    }
+    return r;
+}
+
 Ray::~Ray() {
 
 }

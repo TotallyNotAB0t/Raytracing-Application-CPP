@@ -55,35 +55,29 @@ build CMakeFiles/RTX.dir/main.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/D
   OBJECT_DIR = CMakeFiles\RTX.dir
   OBJECT_FILE_DIR = CMakeFiles\RTX.dir
 
-build CMakeFiles/RTX.dir/CoordinatesClasses/src/Vector.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/CoordinatesClasses/src/Vector.cpp || cmake_object_order_depends_target_RTX
-  DEP_FILE = CMakeFiles\RTX.dir\CoordinatesClasses\src\Vector.cpp.obj.d
+build CMakeFiles/RTX.dir/Classes/Coordinates/src/Vector.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/Coordinates/src/Vector.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Classes\Coordinates\src\Vector.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\RTX.dir
-  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\CoordinatesClasses\src
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Classes\Coordinates\src
 
-build CMakeFiles/RTX.dir/CoordinatesClasses/src/Point.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/CoordinatesClasses/src/Point.cpp || cmake_object_order_depends_target_RTX
-  DEP_FILE = CMakeFiles\RTX.dir\CoordinatesClasses\src\Point.cpp.obj.d
+build CMakeFiles/RTX.dir/Classes/Coordinates/src/Point.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/Coordinates/src/Point.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Classes\Coordinates\src\Point.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\RTX.dir
-  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\CoordinatesClasses\src
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Classes\Coordinates\src
 
-build CMakeFiles/RTX.dir/CoordinatesClasses/src/Ray.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/CoordinatesClasses/src/Ray.cpp || cmake_object_order_depends_target_RTX
-  DEP_FILE = CMakeFiles\RTX.dir\CoordinatesClasses\src\Ray.cpp.obj.d
+build CMakeFiles/RTX.dir/Classes/Coordinates/src/Ray.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/Coordinates/src/Ray.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Classes\Coordinates\src\Ray.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\RTX.dir
-  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\CoordinatesClasses\src
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Classes\Coordinates\src
 
-build CMakeFiles/RTX.dir/CoordinatesClasses/src/Matrix.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/CoordinatesClasses/src/Matrix.cpp || cmake_object_order_depends_target_RTX
-  DEP_FILE = CMakeFiles\RTX.dir\CoordinatesClasses\src\Matrix.cpp.obj.d
+build CMakeFiles/RTX.dir/Classes/Coordinates/src/Matrix.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/Coordinates/src/Matrix.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Classes\Coordinates\src\Matrix.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\RTX.dir
-  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\CoordinatesClasses\src
-
-build CMakeFiles/RTX.dir/Objects/src/Sphere.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Objects/src/Sphere.cpp || cmake_object_order_depends_target_RTX
-  DEP_FILE = CMakeFiles\RTX.dir\Objects\src\Sphere.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\RTX.dir
-  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Objects\src
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Classes\Coordinates\src
 
 build CMakeFiles/RTX.dir/Objects/src/ObjectUtility.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Objects/src/ObjectUtility.cpp || cmake_object_order_depends_target_RTX
   DEP_FILE = CMakeFiles\RTX.dir\Objects\src\ObjectUtility.cpp.obj.d
@@ -91,23 +85,101 @@ build CMakeFiles/RTX.dir/Objects/src/ObjectUtility.cpp.obj: CXX_COMPILER__RTX_De
   OBJECT_DIR = CMakeFiles\RTX.dir
   OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Objects\src
 
-build CMakeFiles/RTX.dir/Objects/src/Plane.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Objects/src/Plane.cpp || cmake_object_order_depends_target_RTX
-  DEP_FILE = CMakeFiles\RTX.dir\Objects\src\Plane.cpp.obj.d
+build CMakeFiles/RTX.dir/Objects/src/PlaneObj.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Objects/src/PlaneObj.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Objects\src\PlaneObj.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\RTX.dir
   OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Objects\src
 
-build CMakeFiles/RTX.dir/CoordinatesClasses/src/HPoint.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/CoordinatesClasses/src/HPoint.cpp || cmake_object_order_depends_target_RTX
-  DEP_FILE = CMakeFiles\RTX.dir\CoordinatesClasses\src\HPoint.cpp.obj.d
+build CMakeFiles/RTX.dir/Classes/Coordinates/src/HPoint.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/Coordinates/src/HPoint.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Classes\Coordinates\src\HPoint.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\RTX.dir
-  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\CoordinatesClasses\src
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Classes\Coordinates\src
 
-build CMakeFiles/RTX.dir/CoordinatesClasses/src/HVector.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/CoordinatesClasses/src/HVector.cpp || cmake_object_order_depends_target_RTX
-  DEP_FILE = CMakeFiles\RTX.dir\CoordinatesClasses\src\HVector.cpp.obj.d
+build CMakeFiles/RTX.dir/Classes/Coordinates/src/HVector.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/Coordinates/src/HVector.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Classes\Coordinates\src\HVector.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\RTX.dir
-  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\CoordinatesClasses\src
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Classes\Coordinates\src
+
+build CMakeFiles/RTX.dir/Classes/Coordinates/src/HRay.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/Coordinates/src/HRay.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Classes\Coordinates\src\HRay.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Classes\Coordinates\src
+
+build CMakeFiles/RTX.dir/Classes/src/Entity.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/src/Entity.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Classes\src\Entity.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Classes\src
+
+build CMakeFiles/RTX.dir/Classes/Entities/src/Camera.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/Entities/src/Camera.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Classes\Entities\src\Camera.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Classes\Entities\src
+
+build CMakeFiles/RTX.dir/Classes/Entities/src/Plan.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/Entities/src/Plan.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Classes\Entities\src\Plan.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Classes\Entities\src
+
+build CMakeFiles/RTX.dir/Classes/Entities/src/Carre.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/Entities/src/Carre.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Classes\Entities\src\Carre.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Classes\Entities\src
+
+build CMakeFiles/RTX.dir/Classes/Entities/src/Sphere.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/Entities/src/Sphere.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Classes\Entities\src\Sphere.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Classes\Entities\src
+
+build CMakeFiles/RTX.dir/Classes/Entities/src/Cube.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/Entities/src/Cube.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Classes\Entities\src\Cube.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Classes\Entities\src
+
+build CMakeFiles/RTX.dir/Classes/Entities/src/Cylinder.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/Entities/src/Cylinder.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Classes\Entities\src\Cylinder.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Classes\Entities\src
+
+build CMakeFiles/RTX.dir/Classes/src/Color.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/src/Color.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Classes\src\Color.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Classes\src
+
+build CMakeFiles/RTX.dir/Classes/src/Material.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/src/Material.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Classes\src\Material.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Classes\src
+
+build CMakeFiles/RTX.dir/Classes/Entities/src/Light.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/Entities/src/Light.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Classes\Entities\src\Light.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Classes\Entities\src
+
+build CMakeFiles/RTX.dir/Classes/src/Scene.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/src/Scene.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Classes\src\Scene.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Classes\src
+
+build CMakeFiles/RTX.dir/Objects/src/SphereObj.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/Objects/src/SphereObj.cpp || cmake_object_order_depends_target_RTX
+  DEP_FILE = CMakeFiles\RTX.dir\Objects\src\SphereObj.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\RTX.dir
+  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Objects\src
 
 
 # =============================================================================
@@ -117,7 +189,7 @@ build CMakeFiles/RTX.dir/CoordinatesClasses/src/HVector.cpp.obj: CXX_COMPILER__R
 #############################################
 # Link the executable RTX.exe
 
-build RTX.exe: CXX_EXECUTABLE_LINKER__RTX_Debug CMakeFiles/RTX.dir/main.cpp.obj CMakeFiles/RTX.dir/CoordinatesClasses/src/Vector.cpp.obj CMakeFiles/RTX.dir/CoordinatesClasses/src/Point.cpp.obj CMakeFiles/RTX.dir/CoordinatesClasses/src/Ray.cpp.obj CMakeFiles/RTX.dir/CoordinatesClasses/src/Matrix.cpp.obj CMakeFiles/RTX.dir/Objects/src/Sphere.cpp.obj CMakeFiles/RTX.dir/Objects/src/ObjectUtility.cpp.obj CMakeFiles/RTX.dir/Objects/src/Plane.cpp.obj CMakeFiles/RTX.dir/CoordinatesClasses/src/HPoint.cpp.obj CMakeFiles/RTX.dir/CoordinatesClasses/src/HVector.cpp.obj
+build RTX.exe: CXX_EXECUTABLE_LINKER__RTX_Debug CMakeFiles/RTX.dir/main.cpp.obj CMakeFiles/RTX.dir/Classes/Coordinates/src/Vector.cpp.obj CMakeFiles/RTX.dir/Classes/Coordinates/src/Point.cpp.obj CMakeFiles/RTX.dir/Classes/Coordinates/src/Ray.cpp.obj CMakeFiles/RTX.dir/Classes/Coordinates/src/Matrix.cpp.obj CMakeFiles/RTX.dir/Objects/src/ObjectUtility.cpp.obj CMakeFiles/RTX.dir/Objects/src/PlaneObj.cpp.obj CMakeFiles/RTX.dir/Classes/Coordinates/src/HPoint.cpp.obj CMakeFiles/RTX.dir/Classes/Coordinates/src/HVector.cpp.obj CMakeFiles/RTX.dir/Classes/Coordinates/src/HRay.cpp.obj CMakeFiles/RTX.dir/Classes/src/Entity.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Camera.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Plan.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Carre.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Sphere.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Cube.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Cylinder.cpp.obj CMakeFiles/RTX.dir/Classes/src/Color.cpp.obj CMakeFiles/RTX.dir/Classes/src/Material.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Light.cpp.obj CMakeFiles/RTX.dir/Classes/src/Scene.cpp.obj CMakeFiles/RTX.dir/Objects/src/SphereObj.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\RTX.dir

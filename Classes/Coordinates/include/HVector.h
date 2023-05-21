@@ -6,9 +6,10 @@
 #define RTX_HVECTOR_H
 
 #include <iostream>
+#include "Vector.h"
 
 class HVector {
-private:
+public:
     float x;
     float y;
     float z;
@@ -17,10 +18,7 @@ private:
 public:
     HVector();
     HVector(float x, float y, float z, float w);
-    float getX() const;
-    float getY() const;
-    float getZ() const;
-    float getW() const;
+    HVector(const Vector &vector);
     HVector operator+(const HVector& vector) const;
     HVector operator-(const HVector& vector) const;
     HVector operator*(float scalar) const;

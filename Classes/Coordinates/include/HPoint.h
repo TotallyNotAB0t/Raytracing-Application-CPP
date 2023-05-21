@@ -9,7 +9,7 @@
 
 class HPoint {
 
-private:
+public:
     float x;
     float y;
     float z;
@@ -19,10 +19,7 @@ public:
     HPoint();
     HPoint(float x, float y, float z, float w);
     HPoint(const HPoint& point, float w);
-    float getX() const;
-    float getY() const;
-    float getZ() const;
-    float getW() const;
+    HPoint(const Point& point);
     HPoint operator+(const HPoint& point) const;
     HPoint operator-(const HPoint& point) const;
     HPoint operator*(float scalar) const;

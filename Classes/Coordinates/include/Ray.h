@@ -9,7 +9,7 @@
 #include "Vector.h"
 
 class Ray {
-    private:
+    public:
         Point origin;
         Vector vector;
     public:
@@ -22,8 +22,11 @@ class Ray {
         Ray(Ray&& r) noexcept;
         Ray& operator=(Ray&& r) noexcept;
 
+
+
         ~Ray();
 
+    Ray normalized() const;
 };
 
 #endif //RTX_RAY_H
