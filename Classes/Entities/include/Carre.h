@@ -8,6 +8,7 @@
 #include "Object.h"
 
 class Carre : public Object {
+
     bool intersect(const Ray& ray, Point& impact)const override;
 };
 

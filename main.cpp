@@ -8,6 +8,8 @@
 #include "Classes/Entities/include/Object.h"
 #include "Classes/Entities/include/Camera.h"
 #include "Classes/Entities/include/Sphere.h"
+#include "Classes/Entities/include/Carre.h"
+#include <algorithm>
 
 int main() {
 
@@ -86,20 +88,27 @@ int main() {
 
     // Ajouter des objets à la scène
     Material mat1(Color(0.2, 0.2, 0.8), Color(0.8, 0.8, 0.8), Color(1.0, 1.0, 1.0), 50);
-    Sphere* sphere1 = new Sphere(Point(0, 0, -5), mat1);
+    Sphere* sphere1 = new Sphere(mat1);
+    sphere1->translate(0, 0, 5);
     scene.addObject(sphere1);
+    std::cout << sphere1->trans << std::endl;
+
+    //Carre* carre1 = new Carre();
+
+/*
 
     Material mat2(Color(0.8, 0.2, 0.2), Color(0.8, 0.8, 0.8), Color(1.0, 1.0, 1.0), 50);
     Cube* cube1 = new Cube(Point(-2, 0, -5), 1, mat2);
     scene.addObject(cube1);
+*/
 
     // Ajouter une lumière à la scène
-    Light* light1 = new Light(Point(0, 5, 0), Color(1.0, 1.0, 1.0), Color(1.0, 1.0, 1.0));
-    scene.addLight(light1);
+/*    Light* light1 = new Light(Point(0, 5, 0), Color(1.0, 1.0, 1.0), Color(1.0, 1.0, 1.0));
+    scene.addLight(light1);*/
 
     // Créer la caméra
     Camera camera(5);
-    camera.translate(0, 0, 3);
+    camera.translate(0, 0, 0);
 
     // Rendu de l'image
     int width = 800;
@@ -110,13 +119,26 @@ int main() {
         for (int x = 0; x < width; ++x) {
             float u = float(x) / float(width);
             float v = float(y) / float(height);
-            Ray ray = camera.getRay(u, v);
-            Color color = scene.trace(ray); // Assumant que vous avez une méthode trace() dans la classe Scene
+            Ray ray = camera.getRay(u, v,  (float)width/(float)height);
 
             int index = (y * width + x) * 3;
-            image[index] = static_cast<unsigned char>(color.r * 255);
-            image[index + 1] = static_cast<unsigned char>(color.g * 255);
-            image[index + 2] = static_cast<unsigned char>(color.b * 255);
+            bool isIntersect = false;
+            Point ptrPoint;
+
+            isIntersect = sphere1->intersect(ray, ptrPoint);
+            Ray normalRay = sphere1->getNormal(ptrPoint, Point());
+            if (isIntersect){
+                Vector L = Vector(1, 0, 0);
+                float n = L.dot(normalRay.vector.normalized()) * 255.0 * 10;
+                n = std::clamp(n, 10.0f, 255.0f);
+                image[index] = n;
+                image[index + 1] = n;
+                image[index + 2] = n;
+            } else {
+                image[index] = 0;
+                image[index + 1] = 0;
+                image[index + 2] = 0;
+            }
         }
     }
 

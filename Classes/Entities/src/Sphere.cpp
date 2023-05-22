@@ -46,6 +46,7 @@ Point Sphere::getTextureCoordinates(const Point& p)const{
 Sphere::~Sphere() {
 
 }
+
 Sphere::Sphere() {
     trans = Matrix();
     transInv = trans.inverse();

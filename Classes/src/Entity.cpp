@@ -2,7 +2,6 @@
 // Created by pierr on 20-May-23.
 //
 #include "../include/Entity.h"
-#include "../Coordinates/include/HRay.h"
 
 #include <cmath>
 
