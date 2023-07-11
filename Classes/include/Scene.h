@@ -24,7 +24,7 @@ public:
     Color getAmbiant() const;
     int nbLights() const;
     const Light* getLight(int index) const;
-    Object* closer_intersected(const Ray& ray, Point& impact) const;
+    Color renderScene(const Ray& ray, Point& impact) const;
 
 private:
     std::vector<Object*> objects;

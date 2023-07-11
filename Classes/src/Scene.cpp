@@ -2,6 +2,7 @@
 // Created by pierr on 21-May-23.
 //
 
+#include <algorithm>
 #include "../include/Scene.h"
 
 Scene::Scene() {
@@ -52,8 +53,9 @@ const Light* Scene::getLight(int index) const {
     return lights[index];
 }
 
-Object* Scene::closer_intersected(const Ray& ray, Point& impact) const {
+Color Scene::renderScene(const Ray& ray, Point& impact) const {
     Object* closest = nullptr;
+    Color color = getBackground();
     double minDist = std::numeric_limits<double>::max();
     for (Object* o : objects) {
         Point p;
@@ -63,8 +65,15 @@ Object* Scene::closer_intersected(const Ray& ray, Point& impact) const {
                 minDist = dist;
                 impact = p;
                 closest = o;
+                color = o->material.kd;
+                Vector L = Vector(1, 0, 0);
+                float n = L.dot(o->getNormal(impact, ray.origin).vector.normalized());
+                n = std::clamp(n, 0.0f, 1.0f);
+                color[0] = color[0] * n;
+                color[1] = color[1] * n;
+                color[2] = color[2] * n;
             }
         }
     }
-    return closest;
+    return color;
 }

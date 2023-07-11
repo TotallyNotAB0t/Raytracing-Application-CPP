@@ -9,10 +9,22 @@
 #include "../../include/Material.h"
 
 class Object : public Entity {
+private:
+    //Material material;
 public:
+    Material material;
+    Object() {
+        trans = Matrix();
+        transInv = trans.inverse();
+    }
+    explicit Object(const Material& mat){
+        trans = Matrix();
+        transInv = trans.inverse();
+        material = mat;
+    };
+
     virtual Point getTextureCoordinates(const Point& p) const = 0;
-    virtual Material getMaterial(const Point& p) const = 0;
-    virtual Ray getNormal(const Point& p, const Point& o) const = 0;
+    virtual Ray getNormal(const Point &p, const Point &o) const = 0;
     virtual bool intersect(const Ray& ray, Point& impact) const = 0;
 };
 

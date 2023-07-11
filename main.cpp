@@ -9,6 +9,7 @@
 #include "Classes/Entities/include/Camera.h"
 #include "Classes/Entities/include/Sphere.h"
 #include "Classes/Entities/include/Carre.h"
+#include "Classes/Entities/include/Cube.h"
 #include <algorithm>
 
 int main() {
@@ -25,7 +26,7 @@ int main() {
     std::cout << test[2] << std::endl;*/
 
     //Matrix test
-    /*    Matrix mat(3, 3);
+    /*Matrix mat = Matrix();
     mat(0, 0) = 1;
     mat(0, 1) = 1;
     mat(0, 2) = 1;
@@ -38,13 +39,17 @@ int main() {
 
     std::cout << mat << std::endl;
 
-    Matrix inv = Matrix(mat.getRows(), mat.getRows());
+    HPoint hp = HPoint(1, 2, 3, 1);
+    std::cout << mat * hp << std::endl;
+    return 0;*/
+
+/*    HPoint yeet = mat * hp;
     if (Matrix::INV(mat, inv)){
         std::cout << inv << std::endl;
-    }
+    }*/
 
     Matrix mat = Matrix();
-    std::cout << mat << std::endl;*/
+    std::cout << mat << std::endl;
 
     // Image test setup
 /*    int width = 1920;
@@ -88,9 +93,15 @@ int main() {
 
     // Ajouter des objets à la scène
     Material mat1(Color(0.2, 0.2, 0.8), Color(0.8, 0.8, 0.8), Color(1.0, 1.0, 1.0), 50);
+    //Material mat2(Color(0.2, 0.8, 0.8), Color(0.8, 0.8, 0.8), Color(1.0, 1.0, 1.0), 20);
     Sphere* sphere1 = new Sphere(mat1);
-    sphere1->translate(0, 0, 5);
+    sphere1->translate(1, 0, 5);
+
+    Cube* sphere2 = new Cube();
+    sphere2->translate(-1, 0, 5);
+
     scene.addObject(sphere1);
+    //scene.addObject(sphere2);
     std::cout << sphere1->trans << std::endl;
 
     //Carre* carre1 = new Carre();
@@ -108,7 +119,7 @@ int main() {
 
     // Créer la caméra
     Camera camera(5);
-    camera.translate(0, 0, 0);
+    camera.translate(0, 0, -20);
 
     // Rendu de l'image
     int width = 800;
@@ -124,10 +135,15 @@ int main() {
             int index = (y * width + x) * 3;
             bool isIntersect = false;
             Point ptrPoint;
+            //isIntersect = scene.renderScene(ray, ptrPoint);
+            //isIntersect = sphere1->intersect(ray, ptrPoint);
+            Color colorToPrint = scene.renderScene(ray, ptrPoint);
+            image[index] = colorToPrint[0] * 255.0f;
+            image[index + 1] = colorToPrint[1] * 255.0f;
+            image[index + 2] = colorToPrint[2] * 255.0f;
 
-            isIntersect = sphere1->intersect(ray, ptrPoint);
-            Ray normalRay = sphere1->getNormal(ptrPoint, Point());
-            if (isIntersect){
+            Ray normalRay = sphere2->getNormal(ptrPoint, Point());
+/*            if (isIntersect){
                 Vector L = Vector(1, 0, 0);
                 float n = L.dot(normalRay.vector.normalized()) * 255.0 * 10;
                 n = std::clamp(n, 10.0f, 255.0f);
@@ -138,7 +154,7 @@ int main() {
                 image[index] = 0;
                 image[index + 1] = 0;
                 image[index + 2] = 0;
-            }
+            }*/
         }
     }
 

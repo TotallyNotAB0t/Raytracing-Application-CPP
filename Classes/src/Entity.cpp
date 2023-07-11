@@ -66,6 +66,10 @@ void Entity::rotateZ(float deg){
 Point Entity::localToGlobal(const Point& p)const{
     HPoint hp(p);
     HPoint temp(transInv * hp);
+/*    std::cout << "=============" << std::endl;
+    std::cout << "trans inv : "<< std::endl << transInv << std::endl;
+    std::cout << "HPoint : " << hp << std::endl;
+    std::cout << "Temp : " << temp << std::endl;*/
     Point res(temp.x, temp.y, temp.z);
     return res;
 }

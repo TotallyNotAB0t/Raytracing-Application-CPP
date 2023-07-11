@@ -47,11 +47,6 @@ Sphere::~Sphere() {
 
 }
 
-Sphere::Sphere() {
-    trans = Matrix();
-    transInv = trans.inverse();
-}
-
 Sphere::Sphere(const Point& p) {
     trans = Matrix();
     translate(p.x, p.y, p.z);
@@ -60,14 +55,4 @@ Sphere::Sphere(const Point& p) {
 Sphere::Sphere(float x, float y, float z){
     trans = Matrix();
     translate(x, y, z);
-}
-
-Material Sphere::getMaterial(const Point &p) const {
-    return material;
-}
-
-Sphere::Sphere(const Material &mat) {
-    trans = Matrix();
-    transInv = trans.inverse();
-    material = mat;
 }

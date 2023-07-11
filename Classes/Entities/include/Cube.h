@@ -8,7 +8,10 @@
 #include "Object.h"
 
 class Cube : public Object {
-
+public:
+    Cube() : Object(){};
+    Cube(const Material& mat) : Object(mat) {};
+    ~Cube();
     float interSide(const Ray &r, int dim, float offset) const;
     bool intersect(const Ray &ray, Point &impact) const override;
     Ray getNormal(const Point &p, const Point &o) const override;

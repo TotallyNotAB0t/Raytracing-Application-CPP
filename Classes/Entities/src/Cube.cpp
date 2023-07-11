@@ -16,7 +16,36 @@ float Cube::interSide(const Ray& r, int dim, float offset)const{
     return t;
 }
 
-bool Cube::intersect(const Ray& ray, Point& impact)const{
+bool Cube::intersect(const Ray& ray, Point& impact) const
+{
+    Ray r = globalToLocal(ray);
+
+
+    bool result =false;
+    float localF;
+    float b = 1.f;
+
+    for(int i =0;i < 6;i++){
+        if(i==3)  b = -b;
+        int j = i%3;
+        float t = (b-r.origin[j])/r.vector[j];
+        Point localimpact = r.origin + t*r.vector;
+        impact = localToGlobal( r.origin + t*r.vector);
+        if(t > 0){
+            if (localimpact[(j-1)<0?2:(j-1)] >= -1 && localimpact[(j-1)<0?2:(j-1)] <= 1 && localimpact[(j+1)%3] >= -1 && localimpact[(j+1)%3] <= 1 ){
+                result = true;
+                localF =t;
+            }
+        }
+    }
+
+    if(!result) return false;
+    impact = localToGlobal( r.origin + localF*r.vector);
+
+    return true;
+}
+
+/*bool Cube::intersect(const Ray& ray, Point& impact)const{
 
     Ray r = globalToLocal(ray).normalized();
 
@@ -37,7 +66,7 @@ bool Cube::intersect(const Ray& ray, Point& impact)const{
     }
 
     return false;
-}
+}*/
 
 Ray Cube::getNormal(const Point& p,const Point& o)const{
     Point lp = globalToLocal(p);
@@ -60,4 +89,8 @@ Point Cube::getTextureCoordinates(const Point& p)const{
     if(lp[1]>0.999 || lp[1]<-0.999)return Point(lp[0]/2 + 0.5,lp[2]/2 + 0.5,0);
     if(lp[2]>0.999 || lp[2]<-0.999)return Point(lp[0]/2 + 0.5,lp[1]/2 + 0.5,0);
     return Point(0,0,0);
+}
+
+Cube::~Cube() {
+
 }
