@@ -26,50 +26,31 @@ int main() {
     std::cout << test[2] << std::endl;*/
 
     //Matrix test
-    /*Matrix mat = Matrix();
-    mat(0, 0) = 1;
-    mat(0, 1) = 1;
-    mat(0, 2) = 1;
-    mat(1, 0) = 1;
-    mat(1, 1) = 2;
-    mat(1, 2) = 3;
-    mat(2, 0) = 2;
-    mat(2, 1) = 4;
-    mat(2, 2) = 5;
+    Matrix mat = Matrix(1, 1, 1, 1,
+                        2, 2, 2, 2,
+                        3, 3, 3, 3,
+                        4, 4, 4, 4);
+
+    Matrix mat33 = Matrix(2, 2, 2, 2,
+                          3, 3, 3, 3,
+                          4, 4, 4, 4,
+                          5, 5, 5, 5);
+
+    std::cout << mat * mat33 << std::endl;
+
+    return 0;
 
     std::cout << mat << std::endl;
 
     HPoint hp = HPoint(1, 2, 3, 1);
-    std::cout << mat * hp << std::endl;
-    return 0;*/
 
-/*    HPoint yeet = mat * hp;
-    if (Matrix::INV(mat, inv)){
-        std::cout << inv << std::endl;
-    }*/
+    std::cout << hp << std::endl;
 
-    Matrix mat = Matrix();
-    std::cout << mat << std::endl;
+    //std::cout << hp.x << std::endl;
+    HPoint res = mat * hp;
+    //std::cout << res.x << std::endl;
 
-    // Image test setup
-/*    int width = 1920;
-    int height = 1080;
-    int channels = 3;
-
-    unsigned char *image_data = new unsigned char[width * height * channels];
-
-    for (int y = 0; y < height; ++y) {
-        for (int x = 0; x < width; ++x) {
-            int index = (y * width + x) * channels;
-            image_data[index] = x;
-            image_data[index + 1] = y;
-            image_data[index + 2] = 0;
-        }
-    }
-
-    stbi_write_jpg("output.jpg", width, height, channels, image_data, 100);
-
-    delete[] image_data;*/
+    std::cout << res << std::endl;
 
     // Object creation test
 /*    std::string filename = "test_objects.txt";
@@ -91,35 +72,29 @@ int main() {
     scene.setBackground(Color(0.2, 0.2, 0.2));
     scene.setAmbiant(Color(0.1, 0.1, 0.1));
 
+    // Créer la caméra
+    Camera camera(1);
+    camera.translate(0, 0, 5);
+
+
     // Ajouter des objets à la scène
     Material mat1(Color(0.2, 0.2, 0.8), Color(0.8, 0.8, 0.8), Color(1.0, 1.0, 1.0), 50);
     //Material mat2(Color(0.2, 0.8, 0.8), Color(0.8, 0.8, 0.8), Color(1.0, 1.0, 1.0), 20);
     Sphere* sphere1 = new Sphere(mat1);
     sphere1->translate(1, 0, 5);
+    sphere1->scale(.2f);
 
-    Cube* sphere2 = new Cube();
-    sphere2->translate(-1, 0, 5);
+    Cube* sphere2 = new Cube(mat1);
+    sphere2->translate(-3, 0, 5);
+    //sphere2->scale(.5f);
 
     scene.addObject(sphere1);
-    //scene.addObject(sphere2);
-    std::cout << sphere1->trans << std::endl;
-
-    //Carre* carre1 = new Carre();
-
-/*
-
-    Material mat2(Color(0.8, 0.2, 0.2), Color(0.8, 0.8, 0.8), Color(1.0, 1.0, 1.0), 50);
-    Cube* cube1 = new Cube(Point(-2, 0, -5), 1, mat2);
-    scene.addObject(cube1);
-*/
+    scene.addObject(sphere2);
 
     // Ajouter une lumière à la scène
-/*    Light* light1 = new Light(Point(0, 5, 0), Color(1.0, 1.0, 1.0), Color(1.0, 1.0, 1.0));
+    /*Light* light1 = new Light(Point(0, 5, 0), Color(1.0, 1.0, 1.0), Color(1.0, 1.0, 1.0));
     scene.addLight(light1);*/
 
-    // Créer la caméra
-    Camera camera(5);
-    camera.translate(0, 0, -20);
 
     // Rendu de l'image
     int width = 800;

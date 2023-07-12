@@ -54,11 +54,11 @@ Matrix::Matrix(const Matrix& other) {
 Matrix::~Matrix() {}
 
 float Matrix::operator()(int i, int j) const {
-    return m_data[j * 4 + i];
+    return m_data[i * 4 + j];
 }
 
 float& Matrix::operator()(int i, int j) {
-    return m_data[j * 4 + i];
+    return m_data[i * 4 + j];
 }
 
 Matrix Matrix::inverse() const {
@@ -131,10 +131,10 @@ std::ostream &operator<<(std::ostream &os, const Matrix &m) {
     for (int i = 0; i < 4; ++i) {
         os << "| ";
         for (int j = 0; j < 4; ++j) {
-            if (m(j,i) < 0){
-                os << m(j,i) << ' ';
+            if (m(i,j) < 0){
+                os << m(i,j) << ' ';
             } else {
-                os << ' ' << m(j,i) << ' ';
+                os << ' ' << m(i,j) << ' ';
             }
         }
         os << '|' << std::endl;

@@ -11,8 +11,8 @@ Entity::~Entity() {}
 
 void Entity::translate(float x, float y, float z){
     Matrix m;
-    m(0,3) = x;
-    m(1,3) = y;
+    m(0, 3) = x;
+    m(1, 3) = y;
     m(2, 3) = z;
     trans=m*trans;
     transInv=trans.inverse();
@@ -20,9 +20,9 @@ void Entity::translate(float x, float y, float z){
 
 void Entity::scale(float factor){
     Matrix m;
-    m(0,0) = factor;
-    m(1,1) = factor;
-    m(2,2) = factor;
+    m(0, 0) = factor;
+    m(1, 1) = factor;
+    m(2, 2) = factor;
     trans = m*trans;
     transInv=trans.inverse();
 }
