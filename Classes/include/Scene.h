@@ -12,6 +12,7 @@
 
 class Scene {
 public:
+    bool shadows;
     Scene();
     Scene(const Color &background, const Color &ambiant);
     ~Scene();

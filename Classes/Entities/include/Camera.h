@@ -13,7 +13,7 @@ public:
     Camera(float focal = 1.0f);
     virtual ~Camera();
 
-    Ray getRay(float x, float y, float ratio) const;
+    Ray getRay(float x, float y) const;
 };
 
 #endif //RTX_CAMERA_H

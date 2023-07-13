@@ -62,38 +62,136 @@ float& Matrix::operator()(int i, int j) {
 }
 
 Matrix Matrix::inverse() const {
-    Matrix result;
-    float det = m_data[0] * (m_data[5] * m_data[10] - m_data[6] * m_data[9])
-                - m_data[1] * (m_data[4] * m_data[10] - m_data[6] * m_data[8])
-                + m_data[2] * (m_data[4] * m_data[9] - m_data[5] * m_data[8]);
+    float inv[16], det;
+    int i;
 
-    if (det == 0.0f) {
-        return result;
-    }
+    inv[0] = m_data[5]  * m_data[10] * m_data[15] -
+             m_data[5]  * m_data[11] * m_data[14] -
+             m_data[9]  * m_data[6]  * m_data[15] +
+             m_data[9]  * m_data[7]  * m_data[14] +
+             m_data[13] * m_data[6]  * m_data[11] -
+             m_data[13] * m_data[7]  * m_data[10];
 
-    float inv_det = 1.0f / det;
+    inv[4] = -m_data[4]  * m_data[10] * m_data[15] +
+             m_data[4]  * m_data[11] * m_data[14] +
+             m_data[8]  * m_data[6]  * m_data[15] -
+             m_data[8]  * m_data[7]  * m_data[14] -
+             m_data[12] * m_data[6]  * m_data[11] +
+             m_data[12] * m_data[7]  * m_data[10];
 
-    result(0, 0) = (m_data[5] * m_data[10] - m_data[6] * m_data[9]) * inv_det;
-    result(0, 1) = (m_data[2] * m_data[9] - m_data[1] * m_data[10]) * inv_det;
-    result(0, 2) = (m_data[1] * m_data[6] - m_data[2] * m_data[5]) * inv_det;
-    result(0, 3) = 0.0f;
+    inv[8] = m_data[4]  * m_data[9] * m_data[15] -
+             m_data[4]  * m_data[11] * m_data[13] -
+             m_data[8]  * m_data[5] * m_data[15] +
+             m_data[8]  * m_data[7] * m_data[13] +
+             m_data[12] * m_data[5] * m_data[11] -
+             m_data[12] * m_data[7] * m_data[9];
 
-    result(1, 0) = (m_data[6] * m_data[8] - m_data[4] * m_data[10]) * inv_det;
-    result(1, 1) = (m_data[0] * m_data[10] - m_data[2] * m_data[8]) * inv_det;
-    result(1, 2) = (m_data[2] * m_data[4] - m_data[0] * m_data[6]) * inv_det;
-    result(1, 3) = 0.0f;
+    inv[12] = -m_data[4]  * m_data[9] * m_data[14] +
+              m_data[4]  * m_data[10] * m_data[13] +
+              m_data[8]  * m_data[5] * m_data[14] -
+              m_data[8]  * m_data[6] * m_data[13] -
+              m_data[12] * m_data[5] * m_data[10] +
+              m_data[12] * m_data[6] * m_data[9];
 
-    result(2, 0) = (m_data[4] * m_data[9] - m_data[5] * m_data[8]) * inv_det;
-    result(2, 1) = (m_data[1] * m_data[8] - m_data[0] * m_data[9]) * inv_det;
-    result(2, 2) = (m_data[0] * m_data[5] - m_data[1] * m_data[4]) * inv_det;
-    result(2, 3) = 0.0f;
+    inv[1] = -m_data[1]  * m_data[10] * m_data[15] +
+             m_data[1]  * m_data[11] * m_data[14] +
+             m_data[9]  * m_data[2] * m_data[15] -
+             m_data[9]  * m_data[3] * m_data[14] -
+             m_data[13] * m_data[2] * m_data[11] +
+             m_data[13] * m_data[3] * m_data[10];
 
-    result(3, 0) = -(m_data[3] * result(0, 0) + m_data[7] * result(1, 0) + m_data[11] * result(2, 0));
-    result(3, 1) = -(m_data[3] * result(0, 1) + m_data[7] * result(1, 1) + m_data[11] * result(2, 1));
-    result(3, 2) = -(m_data[3] * result(0, 2) + m_data[7] * result(1, 2) + m_data[11] * result(2, 2));
-    result(3, 3) = 1.0f;
+    inv[5] = m_data[0]  * m_data[10] * m_data[15] -
+             m_data[0]  * m_data[11] * m_data[14] -
+             m_data[8]  * m_data[2] * m_data[15] +
+             m_data[8]  * m_data[3] * m_data[14] +
+             m_data[12] * m_data[2] * m_data[11] -
+             m_data[12] * m_data[3] * m_data[10];
 
-    return result;
+    inv[9] = -m_data[0]  * m_data[9] * m_data[15] +
+             m_data[0]  * m_data[11] * m_data[13] +
+             m_data[8]  * m_data[1] * m_data[15] -
+             m_data[8]  * m_data[3] * m_data[13] -
+             m_data[12] * m_data[1] * m_data[11] +
+             m_data[12] * m_data[3] * m_data[9];
+
+    inv[13] = m_data[0]  * m_data[9] * m_data[14] -
+              m_data[0]  * m_data[10] * m_data[13] -
+              m_data[8]  * m_data[1] * m_data[14] +
+              m_data[8]  * m_data[2] * m_data[13] +
+              m_data[12] * m_data[1] * m_data[10] -
+              m_data[12] * m_data[2] * m_data[9];
+
+    inv[2] = m_data[1]  * m_data[6] * m_data[15] -
+             m_data[1]  * m_data[7] * m_data[14] -
+             m_data[5]  * m_data[2] * m_data[15] +
+             m_data[5]  * m_data[3] * m_data[14] +
+             m_data[13] * m_data[2] * m_data[7] -
+             m_data[13] * m_data[3] * m_data[6];
+
+    inv[6] = -m_data[0]  * m_data[6] * m_data[15] +
+             m_data[0]  * m_data[7] * m_data[14] +
+             m_data[4]  * m_data[2] * m_data[15] -
+             m_data[4]  * m_data[3] * m_data[14] -
+             m_data[12] * m_data[2] * m_data[7] +
+             m_data[12] * m_data[3] * m_data[6];
+
+    inv[10] = m_data[0]  * m_data[5] * m_data[15] -
+              m_data[0]  * m_data[7] * m_data[13] -
+              m_data[4]  * m_data[1] * m_data[15] +
+              m_data[4]  * m_data[3] * m_data[13] +
+              m_data[12] * m_data[1] * m_data[7] -
+              m_data[12] * m_data[3] * m_data[5];
+
+    inv[14] = -m_data[0]  * m_data[5] * m_data[14] +
+              m_data[0]  * m_data[6] * m_data[13] +
+              m_data[4]  * m_data[1] * m_data[14] -
+              m_data[4]  * m_data[2] * m_data[13] -
+              m_data[12] * m_data[1] * m_data[6] +
+              m_data[12] * m_data[2] * m_data[5];
+
+    inv[3] = -m_data[1] * m_data[6] * m_data[11] +
+             m_data[1] * m_data[7] * m_data[10] +
+             m_data[5] * m_data[2] * m_data[11] -
+             m_data[5] * m_data[3] * m_data[10] -
+             m_data[9] * m_data[2] * m_data[7] +
+             m_data[9] * m_data[3] * m_data[6];
+
+    inv[7] = m_data[0] * m_data[6] * m_data[11] -
+             m_data[0] * m_data[7] * m_data[10] -
+             m_data[4] * m_data[2] * m_data[11] +
+             m_data[4] * m_data[3] * m_data[10] +
+             m_data[8] * m_data[2] * m_data[7] -
+             m_data[8] * m_data[3] * m_data[6];
+
+    inv[11] = -m_data[0] * m_data[5] * m_data[11] +
+              m_data[0] * m_data[7] * m_data[9] +
+              m_data[4] * m_data[1] * m_data[11] -
+              m_data[4] * m_data[3] * m_data[9] -
+              m_data[8] * m_data[1] * m_data[7] +
+              m_data[8] * m_data[3] * m_data[5];
+
+    inv[15] = m_data[0] * m_data[5] * m_data[10] -
+              m_data[0] * m_data[6] * m_data[9] -
+              m_data[4] * m_data[1] * m_data[10] +
+              m_data[4] * m_data[2] * m_data[9] +
+              m_data[8] * m_data[1] * m_data[6] -
+              m_data[8] * m_data[2] * m_data[5];
+
+    det = m_data[0] * inv[0] + m_data[1] * inv[4] + m_data[2] * inv[8] + m_data[3] * inv[12];
+
+    if (det == 0)
+        throw std::runtime_error("Matrix is not invertible.");
+
+    det = 1.0 / det;
+
+    for (i = 0; i < 16; i++)
+        inv[i] = inv[i] * det;
+
+    return Matrix(inv[0], inv[1], inv[2], inv[3],
+                  inv[4], inv[5], inv[6], inv[7],
+                  inv[8], inv[9], inv[10], inv[11],
+                  inv[12], inv[13], inv[14], inv[15]);
+
 }
 
 Matrix Matrix::operator*(const Matrix& other) const {
@@ -131,11 +229,14 @@ std::ostream &operator<<(std::ostream &os, const Matrix &m) {
     for (int i = 0; i < 4; ++i) {
         os << "| ";
         for (int j = 0; j < 4; ++j) {
-            if (m(i,j) < 0){
-                os << m(i,j) << ' ';
-            } else {
-                os << ' ' << m(i,j) << ' ';
+            float var = m(i,j);
+            if (var >= 0) {
+                os << ' ';
             }
+            if(var == (int)var){
+                os << "  ";
+            }
+            os << var << ' ';
         }
         os << '|' << std::endl;
     }

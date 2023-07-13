@@ -56,6 +56,8 @@ const Light* Scene::getLight(int index) const {
 Color Scene::renderScene(const Ray& ray, Point& impact) const {
     Object* closest = nullptr;
     Color color = getBackground();
+    Light* light1 = new Light();
+    light1->translate(1, 1, 1);
     double minDist = std::numeric_limits<double>::max();
     for (Object* o : objects) {
         Point p;
@@ -66,9 +68,17 @@ Color Scene::renderScene(const Ray& ray, Point& impact) const {
                 impact = p;
                 closest = o;
                 color = o->material.kd;
-                Vector L = Vector(1, 0, 0);
-                float n = L.dot(o->getNormal(impact, ray.origin).vector.normalized());
+                Vector* lightPos = new Vector(light1->trans(0, 3), light1->trans(1, 3), light1->trans(2, 3));
+                //std::cout << lightPos->normalized() << std::endl;
+                float n = lightPos->dot(o->getNormal(impact, ray.origin).vector);
                 n = std::clamp(n, 0.0f, 1.0f);
+                //std::cout << n << std::endl;
+                if(!this->shadows){
+                    n = ceilf(n);
+                }
+/*                color[0] = o->getNormal(impact, ray.origin).vector.x * 0.5 + 0.5;
+                color[1] = o->getNormal(impact, ray.origin).vector.y * 0.5 + 0.5;
+                color[2] = o->getNormal(impact, ray.origin).vector.z * 0.5 + 0.5;*/
                 color[0] = color[0] * n;
                 color[1] = color[1] * n;
                 color[2] = color[2] * n;

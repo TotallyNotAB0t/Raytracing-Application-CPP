@@ -29,13 +29,15 @@ void Entity::scale(float factor){
 
 void Entity::rotateX(float deg){
     Matrix m;
-    float c  = cos(deg);
-    float s  = sin(deg);
+    float c  = std::cos(deg);
+    float s  = std::sin(deg);
     m(1,1) = c;
     m(1,2) = -s;
     m(2,1) = s;
     m(2,2) = c;
+    std::cout << trans << std::endl;
     trans=m*trans;
+    std::cout << trans << std::endl;
     transInv=trans.inverse();
 }
 
@@ -66,10 +68,6 @@ void Entity::rotateZ(float deg){
 Point Entity::localToGlobal(const Point& p)const{
     HPoint hp(p);
     HPoint temp(transInv * hp);
-/*    std::cout << "=============" << std::endl;
-    std::cout << "trans inv : "<< std::endl << transInv << std::endl;
-    std::cout << "HPoint : " << hp << std::endl;
-    std::cout << "Temp : " << temp << std::endl;*/
     Point res(temp.x, temp.y, temp.z);
     return res;
 }

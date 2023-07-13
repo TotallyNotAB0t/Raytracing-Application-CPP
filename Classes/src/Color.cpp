@@ -9,7 +9,7 @@ Color::Color() {
     b = 0.0f;
 }
 
-Color::Color(float, float g, float b) {
+Color::Color(float r, float g, float b) {
     this->r = r;
     this->g = g;
     this->b = b;
