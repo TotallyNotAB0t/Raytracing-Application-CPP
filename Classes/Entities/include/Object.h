@@ -26,6 +26,9 @@ public:
     virtual Point getTextureCoordinates(const Point& p) const = 0;
     virtual Ray getNormal(const Point &p, const Point &o) const = 0;
     virtual bool intersect(const Ray& ray, Point& impact) const = 0;
+    virtual Material getMaterial(const Point& point) const {
+        return this->material;
+    }
 };
 
 #endif //RTX_OBJECT_H

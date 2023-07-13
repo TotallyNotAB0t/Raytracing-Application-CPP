@@ -54,7 +54,7 @@ const Light* Scene::getLight(int index) const {
 }
 
 Color Scene::renderScene(const Ray& ray, Point& impact) const {
-    Object* closest = nullptr;
+/*    Object* closest = nullptr;
     Color color = getBackground();
     Light* light1 = new Light();
     light1->translate(1, 1, 1);
@@ -76,14 +76,59 @@ Color Scene::renderScene(const Ray& ray, Point& impact) const {
                 if(!this->shadows){
                     n = ceilf(n);
                 }
-/*                color[0] = o->getNormal(impact, ray.origin).vector.x * 0.5 + 0.5;
+                color[0] = o->getNormal(impact, ray.origin).vector.x * 0.5 + 0.5;
                 color[1] = o->getNormal(impact, ray.origin).vector.y * 0.5 + 0.5;
-                color[2] = o->getNormal(impact, ray.origin).vector.z * 0.5 + 0.5;*/
+                color[2] = o->getNormal(impact, ray.origin).vector.z * 0.5 + 0.5;
                 color[0] = color[0] * n;
                 color[1] = color[1] * n;
-                color[2] = color[2] * n;
+                color[2] = color[2] * n;/*
             }
         }
     }
-    return color;
+    return color;*/
+    Object* closest = nullptr;
+    double minDist = std::numeric_limits<double>::max();
+
+    // Trouver l'objet le plus proche intersecté par le rayon
+    for (Object* o : objects) {
+        Point p;
+        if (o->intersect(ray, p)) {
+            double dist = Vector(p - ray.origin).vlength();
+            if (dist < minDist) {
+                minDist = dist;
+                closest = o;
+                impact = p;
+            }
+        }
+    }
+
+    // Si aucun objet n'est intersecté, retourner la couleur de fond
+    if (closest == nullptr) {
+        return getBackground();
+    }
+
+    // Calculer la couleur d'impact en utilisant la fonction getImpactColor
+    return getImpactColor(ray, *closest, impact, *this);
+}
+
+Color Scene::getImpactColor(const Ray& ray, const Object& obj, const Point& impact, const Scene& scene) const {
+    Material m = obj.getMaterial(impact);
+    Ray normal = obj.getNormal(impact,ray.origin);
+    Color c = m.ka.mul(scene.getAmbiant());
+    for(int l = 0; l < scene.nbLights(); l++){
+        const Light* light = scene.getLight(l);
+        Vector lv = light->getVectorToLight(impact);
+        float alpha = lv.dot(normal.vector);
+        if(alpha>0)
+            c+= (light->id).mul(m.kd) * alpha;
+
+        Vector rm = (2*lv.dot(normal.vector)*normal.vector) - lv;
+
+        float beta = -rm.dot(ray.vector);
+        if(beta>0)
+            c+=  (light->is).mul(m.ks) * pow(beta, m.shininess);
+    }
+
+    return c;
+
 }

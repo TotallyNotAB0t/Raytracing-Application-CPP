@@ -94,8 +94,9 @@ int main() {
     Sphere* sphere3 = new Sphere(mat3);
     sphere3->translate(2, 0, 1);
 
-    /*Light* light1 = new Light();
-    light1->translate(4, 0, 0);*/
+    Light* light1 = new Light();
+    light1->translate(1, 1, 1);
+    scene.addLight(light1);
 
     //camera.rotateY(.2f);
 

@@ -32,6 +32,8 @@ private:
     std::vector<Light*> lights;
     Color background;
     Color ambiant;
+
+    Color getImpactColor(const Ray& ray, const Object& obj, const Point& impact, const Scene& scene) const;
 };
 
 #endif //RTX_SCENE_H
