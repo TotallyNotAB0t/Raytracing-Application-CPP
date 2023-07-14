@@ -6,9 +6,9 @@
 class Material 
 {
 public:
-    Color ka;
-    Color kd;
-    Color ks;
+    Color ka;//ambiant
+    Color kd;//diffusion
+    Color ks;//specular
     float shininess;
 
     Material();

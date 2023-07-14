@@ -39,17 +39,16 @@ int main()
     cube1->translate(0, 0, 0);
     cube1->rotateY(.5f);
     cube1->rotateX(.5f);
-    cube1->scale(5);
 
     Light* light1 = new Light();
-    light1->translate(0, 0, 0);
-    scene.addLight(light1);
+    light1->translate(1, 1, 1);
 
-    scene.addObject(sphere2);
+    scene.addLight(light1);
+    scene.addObject(sphere1);
     scene.addObject(cube1);
 
-    int width = 500;
-    int height = 500;
+    int width = 250;
+    int height = 250;
     std::vector<unsigned char> image(width * height * 3);
 
     for (int y = 0; y < height; ++y) 
@@ -61,10 +60,9 @@ int main()
             Ray ray = camera.getRay(u, v);
 
             int index = (y * width + x) * 3;
-            bool isIntersect = false;
             Point ptrPoint;
-
             Color colorToPrint = scene.renderScene(ray, ptrPoint);
+            std::cout << colorToPrint[0] << " " << colorToPrint[1] << " " << colorToPrint[2] << std::endl;
             image[index] = colorToPrint[0] * 255.0f;
             image[index + 1] = colorToPrint[1] * 255.0f;
             image[index + 2] = colorToPrint[2] * 255.0f;

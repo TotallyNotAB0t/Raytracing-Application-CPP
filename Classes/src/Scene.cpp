@@ -68,11 +68,14 @@ Color Scene::renderScene(const Ray& ray, Point& impact) const
     Light* light1 = new Light();
     light1->translate(0, 0, 0);
     double minDist = std::numeric_limits<double>::max();
-    for (Object* o : objects) {
+    for (Object* o : objects) 
+    {
         Point p;
-        if (o->intersect(ray, p)) {
+        if (o->intersect(ray, p)) 
+        {
             double dist = Vector(p - ray.origin).vlength();
-            if (dist < minDist) {
+            if (dist < minDist) 
+            {
                 minDist = dist;
                 impact = p;
                 closest = o;
@@ -84,12 +87,12 @@ Color Scene::renderScene(const Ray& ray, Point& impact) const
                 {
                     n = ceilf(n);
                 }
-                color[0] = o->getNormal(impact, ray.origin).vector.x * 0.5 + 0.5;
+                /*color[0] = o->getNormal(impact, ray.origin).vector.x * 0.5 + 0.5;
                 color[1] = o->getNormal(impact, ray.origin).vector.y * 0.5 + 0.5;
-                color[2] = o->getNormal(impact, ray.origin).vector.z * 0.5 + 0.5;
-                /*color[0] = color[0] * n;
+                color[2] = o->getNormal(impact, ray.origin).vector.z * 0.5 + 0.5;*/
+                color[0] = color[0] * n;
                 color[1] = color[1] * n;
-                color[2] = color[2] * n;*/
+                color[2] = color[2] * n;
             }
         }
     }
