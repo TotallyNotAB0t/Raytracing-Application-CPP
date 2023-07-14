@@ -1,13 +1,10 @@
-//
-// Created by pierr on 20-May-23.
-//
-
 #ifndef RTX_SPHERE_H
 #define RTX_SPHERE_H
 
 #include "Object.h"
 
-class Sphere : public Object {
+class Sphere : public Object 
+{
 public:
     Sphere() : Object(){};
     Sphere(const Point& p);

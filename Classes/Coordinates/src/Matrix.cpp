@@ -1,10 +1,7 @@
-//
-// Created by pierr on 10-May-23.
-//
+#include "Matrix.h"
 
-#include "../include/Matrix.h"
-
-Matrix::Matrix() {
+Matrix::Matrix() 
+{
     m_data[0] = 1;
     m_data[1] = 0;
     m_data[2] = 0;
@@ -26,7 +23,8 @@ Matrix::Matrix() {
 Matrix::Matrix(float m00, float m01, float m02, float m03,
                float m10, float m11, float m12, float m13,
                float m20, float m21, float m22, float m23,
-               float m30, float m31, float m32, float m33) {
+               float m30, float m31, float m32, float m33) 
+{
     m_data[0] = m00;
     m_data[1] = m01;
     m_data[2] = m02;
@@ -45,7 +43,8 @@ Matrix::Matrix(float m00, float m01, float m02, float m03,
     m_data[15] = m33;
 }
 
-Matrix::Matrix(const Matrix& other) {
+Matrix::Matrix(const Matrix& other) 
+{
     for (int i = 0; i < 16; i++) {
         m_data[i] = other.m_data[i];
     }
@@ -53,15 +52,18 @@ Matrix::Matrix(const Matrix& other) {
 
 Matrix::~Matrix() {}
 
-float Matrix::operator()(int i, int j) const {
+float Matrix::operator()(int i, int j) const 
+{
     return m_data[i * 4 + j];
 }
 
-float& Matrix::operator()(int i, int j) {
+float& Matrix::operator()(int i, int j) 
+{
     return m_data[i * 4 + j];
 }
 
-Matrix Matrix::inverse() const {
+Matrix Matrix::inverse() const 
+{
     float inv[16], det;
     int i;
 
@@ -180,12 +182,16 @@ Matrix Matrix::inverse() const {
     det = m_data[0] * inv[0] + m_data[1] * inv[4] + m_data[2] * inv[8] + m_data[3] * inv[12];
 
     if (det == 0)
+    {
         throw std::runtime_error("Matrix is not invertible.");
+    }
 
     det = 1.0 / det;
 
     for (i = 0; i < 16; i++)
+    {
         inv[i] = inv[i] * det;
+    }
 
     return Matrix(inv[0], inv[1], inv[2], inv[3],
                   inv[4], inv[5], inv[6], inv[7],
@@ -194,7 +200,8 @@ Matrix Matrix::inverse() const {
 
 }
 
-Matrix Matrix::operator*(const Matrix& other) const {
+Matrix Matrix::operator*(const Matrix& other) const 
+{
     Matrix result;
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
@@ -207,7 +214,8 @@ Matrix Matrix::operator*(const Matrix& other) const {
     return result;
 }
 
-HPoint Matrix::operator*(const HPoint& point) const {
+HPoint Matrix::operator*(const HPoint& point) const 
+{
     HPoint result;
     result.x = m_data[0] * point.x + m_data[1] * point.y + m_data[2] * point.z + m_data[3] * point.w;
     result.y = m_data[4] * point.x + m_data[5] * point.y + m_data[6] * point.z + m_data[7] * point.w;
@@ -216,7 +224,8 @@ HPoint Matrix::operator*(const HPoint& point) const {
     return result;
 }
 
-HVector Matrix::operator*(const HVector& vector) const {
+HVector Matrix::operator*(const HVector& vector) const 
+{
     HVector result;
     result.x = m_data[0] * vector.x + m_data[1] * vector.y + m_data[2] * vector.z + m_data[3] * vector.w;
     result.y = m_data[4] * vector.x + m_data[5] * vector.y + m_data[6] * vector.z + m_data[7] * vector.w;
@@ -225,15 +234,20 @@ HVector Matrix::operator*(const HVector& vector) const {
     return result;
 }
 
-std::ostream &operator<<(std::ostream &os, const Matrix &m) {
-    for (int i = 0; i < 4; ++i) {
+std::ostream &operator<<(std::ostream &os, const Matrix &m) 
+{
+    for (int i = 0; i < 4; ++i) 
+    {
         os << "| ";
-        for (int j = 0; j < 4; ++j) {
+        for (int j = 0; j < 4; ++j) 
+        {
             float var = m(i,j);
-            if (var >= 0) {
+            if (var >= 0) 
+            {
                 os << ' ';
             }
-            if(var == (int)var){
+            if(var == (int)var)
+            {
                 os << "  ";
             }
             os << var << ' ';

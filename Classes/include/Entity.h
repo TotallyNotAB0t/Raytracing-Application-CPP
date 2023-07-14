@@ -1,16 +1,16 @@
-//
-// Created by pierr on 20-May-23.
-//
-
 #ifndef RTX_ENTITY_H
 #define RTX_ENTITY_H
 
-#include "../Coordinates/include/Point.h"
-#include "../Coordinates/include/Vector.h"
-#include "../Coordinates/include/Ray.h"
-#include "../Coordinates/include/Matrix.h"
+#include "Point.h"
+#include "Vector.h"
+#include "Ray.h"
+#include "Matrix.h"
 
-class Entity {
+#define _USE_MATH_DEFINES
+#include <math.h>
+
+class Entity 
+{
 public:
     Entity();
     virtual ~Entity();

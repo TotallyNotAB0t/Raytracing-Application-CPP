@@ -1,14 +1,11 @@
-//
-// Created by pierr on 10-May-23.
-//
-
 #ifndef RTX_MATRIX_H
 #define RTX_MATRIX_H
 
 #include "HPoint.h"
 #include "HVector.h"
 
-class Matrix {
+class Matrix 
+{
 public:
     Matrix();
     Matrix (float m00, float m01, float m02, float m03,

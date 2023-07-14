@@ -1,6 +1,27 @@
-cmake_minimum_required(VERSION 3.25)
-project(RTX)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.23.2)
+PROJECT(RTX)
 
-set(CMAKE_CXX_STANDARD 17)
+SET(CMAKE_CXX_STANDARD 17)
 
-add_executable(RTX main.cpp Classes/Coordinates/src/Vector.cpp Classes/Coordinates/include/Vector.h Classes/Coordinates/src/Point.cpp Classes/Coordinates/include/Point.h lib/include/stb_image_write.h Classes/Coordinates/src/Ray.cpp Classes/Coordinates/include/Ray.h Classes/Coordinates/src/Matrix.cpp Classes/Coordinates/include/Matrix.h Objects/include/InstantiableObject.h Objects/include/ObjectUtiliy.h Objects/src/ObjectUtility.cpp Objects/src/PlaneObj.cpp Objects/include/PlaneObj.h Classes/Coordinates/include/HPoint.h Classes/Coordinates/src/HPoint.cpp Classes/Coordinates/include/HVector.h Classes/Coordinates/src/HVector.cpp Classes/Coordinates/include/HRay.h Classes/Coordinates/src/HRay.cpp Classes/include/Entity.h Classes/src/Entity.cpp Classes/Entities/include/Camera.h Classes/Entities/src/Camera.cpp Classes/Entities/include/Plan.h Classes/Entities/src/Plan.cpp Classes/Entities/include/Carre.h Classes/Entities/src/Carre.cpp Classes/Entities/include/Sphere.h Classes/Entities/src/Sphere.cpp Classes/Entities/include/Cube.h Classes/Entities/src/Cube.cpp Classes/Entities/include/Cylinder.h Classes/Entities/src/Cylinder.cpp Classes/include/Color.h Classes/src/Color.cpp Classes/Entities/include/Object.h Classes/include/Material.h Classes/src/Material.cpp Classes/Entities/include/Light.h Classes/Entities/src/Light.cpp Classes/include/Scene.h Classes/src/Scene.cpp Objects/src/SphereObj.cpp Objects/include/SphereObj.h Objects/include/SphereObj.h)
+# Inlude
+INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/Classes/Coordinates/include)
+INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/Classes/Entities/include)
+INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/Classes/include)
+INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/lib/include)
+INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/Objects/include)
+
+# Fichier
+FILE(GLOB_RECURSE RTX_SOURCES 
+    RELATIVE ${CMAKE_SOURCE_DIR}
+    *.cpp *.c
+)
+
+FILE(GLOB_RECURSE RTX_HEADERS 
+    RELATIVE ${CMAKE_SOURCE_DIR}
+    *.hpp *.h *.inl
+)
+
+LIST(FILTER RTX_SOURCES EXCLUDE REGEX "^out/")
+LIST(FILTER RTX_HEADERS EXCLUDE REGEX "^out/")
+
+ADD_EXECUTABLE(RTX ${RTX_SOURCES} ${RTX_HEADERS})

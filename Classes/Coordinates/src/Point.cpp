@@ -1,33 +1,35 @@
-//
-// Created by pierr on 26-Apr-23.
-//
+#include "Point.h"
 
-#include "../include/Point.h"
-
-Point::Point() {
+Point::Point() 
+{
     this->x = 0;
     this->y = 0;
     this->z = 0;
 }
 
-Point::Point(float x, float y, float z) {
+Point::Point(float x, float y, float z) 
+{
     this->x = x;
     this->y = y;
     this->z = z;
 }
 
-Point::~Point() {
+Point::~Point() 
+{
     this->x = 0;
     this->y = 0;
     this->z = 0;
 }
 
-float Point::dot(const Point& p) const {
+float Point::dot(const Point& p) const 
+{
     return x *p.x + y * p.y + z * p.z;
 }
 
-float Point::operator[](int val) const {
-    switch (val) {
+float Point::operator[](int val) const 
+{
+    switch (val) 
+    {
         case 0:
             return this->x;
         case 1:
@@ -39,8 +41,10 @@ float Point::operator[](int val) const {
     }
 }
 
-float &Point::operator[](int val) {
-    switch (val) {
+float &Point::operator[](int val) 
+{
+    switch (val) 
+    {
         case 0:
             return this->x;
         case 1:
@@ -52,7 +56,8 @@ float &Point::operator[](int val) {
     }
 }
 
-Point Point::operator+(const Point &p) const {
+Point Point::operator+(const Point &p) const 
+{
     Point res;
     res.x = this->x + p.x;
     res.y = this->y + p.y;
@@ -60,7 +65,8 @@ Point Point::operator+(const Point &p) const {
     return res;
 }
 
-Point Point::operator-(const Point &p) const {
+Point Point::operator-(const Point &p) const 
+{
     Point res;
     res.x = this->x - p.x;
     res.y = this->y - p.y;
@@ -68,7 +74,8 @@ Point Point::operator-(const Point &p) const {
     return res;
 }
 
-Point Point::operator*(const Point &p) const {
+Point Point::operator*(const Point &p) const 
+{
     Point res;
     res.x = this->x * p.x;
     res.y = this->y * p.y;
@@ -76,7 +83,8 @@ Point Point::operator*(const Point &p) const {
     return res;
 }
 
-Point Point::operator/(const Point &p) const {
+Point Point::operator/(const Point &p) const 
+{
     Point res;
     res.x = this->x / p.x;
     res.y = this->y / p.y;
@@ -84,24 +92,28 @@ Point Point::operator/(const Point &p) const {
     return res;
 }
 
-Point Point::operator/(float const& f) const {
+Point Point::operator/(float const& f) const 
+{
     return Point(x / f, y / f, z / f);
 }
 
-Point Point::operator+(const Vector& v) const {
+Point Point::operator+(const Vector& v) const 
+{
     return Point(x + v.x, y + v.y, z + v.z);
 }
 
-Point Point::operator-() const {
+Point Point::operator-() const 
+{
     return Point(-this->x, -this->y, -this->z);
 }
 
-float Point::norm() {
+float Point::norm() 
+{
     return sqrt(x*x + y*y + z*z);
 }
 
-
-std::ostream &operator<<(std::ostream &os, const Point &p) {
+std::ostream &operator<<(std::ostream &os, const Point &p) 
+{
     os << "X : " << p.x << ", " << "Y : " << p.y << ", " << "Z : " << p.z << '.' << std::endl;
     return os;
 }

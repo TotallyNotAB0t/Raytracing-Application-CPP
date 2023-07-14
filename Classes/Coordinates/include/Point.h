@@ -1,14 +1,11 @@
-//
-// Created by pierr on 26-Apr-23.
-//
-
 #ifndef RTX_POINT_H
 #define RTX_POINT_H
 #include <iostream>
 
 class Vector;
 
-class Point {
+class Point 
+{
     public:
         float x;
         float y;
@@ -29,8 +26,6 @@ class Point {
         float norm();
         friend std::ostream& operator<<(std::ostream& os, const Point& p);
         ~Point();
-
-
 };
 #include "Vector.h"
 

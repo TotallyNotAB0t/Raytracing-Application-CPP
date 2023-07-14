@@ -1,7 +1,3 @@
-//
-// Created by pierr on 20-May-23.
-//
-
 #ifndef RTX_HRAY_H
 #define RTX_HRAY_H
 
@@ -9,11 +5,11 @@
 #include "HVector.h"
 #include "Ray.h"
 
-class HRay {
+class HRay 
+{
 public:
     HPoint origin;
     HVector vector;
-
 public:
     HRay();
     HRay(const Ray& r);

@@ -1,15 +1,11 @@
-//
-// Created by pierr on 20-May-23.
-//
-#include "../include/Entity.h"
-
-#include <cmath>
+#include "Entity.h"
 
 Entity::Entity() : trans(Matrix()) {}
 
 Entity::~Entity() {}
 
-void Entity::translate(float x, float y, float z){
+void Entity::translate(float x, float y, float z)
+{
     Matrix m;
     m(0, 3) = x;
     m(1, 3) = y;
@@ -18,7 +14,8 @@ void Entity::translate(float x, float y, float z){
     transInv=trans.inverse();
 }
 
-void Entity::scale(float factor){
+void Entity::scale(float factor)
+{
     Matrix m;
     m(0, 0) = factor;
     m(1, 1) = factor;
@@ -27,7 +24,8 @@ void Entity::scale(float factor){
     transInv=trans.inverse();
 }
 
-void Entity::rotateX(float deg){
+void Entity::rotateX(float deg)
+{
     Matrix m;
     float c  = std::cos(deg);
     float s  = std::sin(deg);
@@ -35,13 +33,12 @@ void Entity::rotateX(float deg){
     m(1,2) = -s;
     m(2,1) = s;
     m(2,2) = c;
-    std::cout << trans << std::endl;
     trans=m*trans;
-    std::cout << trans << std::endl;
     transInv=trans.inverse();
 }
 
-void Entity::rotateY(float deg){
+void Entity::rotateY(float deg)
+{
     Matrix m;
     float c  = cos(deg);
     float s  = sin(deg);
@@ -53,7 +50,8 @@ void Entity::rotateY(float deg){
     transInv=trans.inverse();
 }
 
-void Entity::rotateZ(float deg){
+void Entity::rotateZ(float deg)
+{
     Matrix m;
     float c = cos(deg);
     float s = sin(deg);
@@ -65,40 +63,46 @@ void Entity::rotateZ(float deg){
     transInv=trans.inverse();
 }
 
-Point Entity::localToGlobal(const Point& p)const{
+Point Entity::localToGlobal(const Point& p) const
+{
     HPoint hp(p);
     HPoint temp(transInv * hp);
     Point res(temp.x, temp.y, temp.z);
     return res;
 }
 
-Vector Entity::localToGlobal(const Vector &v) const {
+Vector Entity::localToGlobal(const Vector &v) const 
+{
     HVector hv(v);
     HVector temp(transInv * hv);
     Vector res(temp.x, temp.y, temp.z);
     return res;
 }
 
-Ray Entity::localToGlobal(const Ray &r) const {
+Ray Entity::localToGlobal(const Ray &r) const 
+{
     Ray res(localToGlobal(r.origin), localToGlobal(r.vector));
     return res;
 }
 
-Point Entity::globalToLocal(const Point& p) const {
+Point Entity::globalToLocal(const Point& p) const 
+{
     HPoint hp(p);
     HPoint temp(trans * hp);
     Point res(temp.x, temp.y, temp.z);
     return res;
 }
 
-Vector Entity::globalToLocal(const Vector& v) const {
+Vector Entity::globalToLocal(const Vector& v) const 
+{
     HVector hv(v);
     HVector temp(trans * hv);
     Vector res(temp.x, temp.y, temp.z);
     return res;
 }
 
-Ray Entity::globalToLocal(const Ray& r) const {
+Ray Entity::globalToLocal(const Ray& r) const 
+{
     Ray res(globalToLocal(r.origin), globalToLocal(r.vector));
     return res;
 }

@@ -1,15 +1,14 @@
-//
-// Created by pierr on 21-May-23.
-//
-#include "../include/Color.h"
+#include "Color.h"
 
-Color::Color() {
+Color::Color() 
+{
     r = 0.0f;
     g = 0.0f;
     b = 0.0f;
 }
 
-Color::Color(float r, float g, float b) {
+Color::Color(float r, float g, float b) 
+{
     this->r = r;
     this->g = g;
     this->b = b;
@@ -17,8 +16,10 @@ Color::Color(float r, float g, float b) {
 
 Color::~Color() {}
 
-float Color::operator[](int index) const {
-    switch (index) {
+float Color::operator[](int index) const 
+{
+    switch (index) 
+    {
         case 0:
             return r;
         case 1:
@@ -30,8 +31,10 @@ float Color::operator[](int index) const {
     }
 }
 
-float& Color::operator[](int index) {
-    switch (index) {
+float& Color::operator[](int index) 
+{
+    switch (index) 
+    {
         case 0:
             return r;
         case 1:
@@ -43,61 +46,72 @@ float& Color::operator[](int index) {
     }
 }
 
-Color Color::operator+(const Color& c) const {
+Color Color::operator+(const Color& c) const 
+{
     return Color(r + c.r, g + c.g, b + c.b);
 }
 
-Color Color::operator-(const Color& c) const {
+Color Color::operator-(const Color& c) const 
+{
     return Color(r - c.r, g - c.g, b - c.b);
 }
 
-Color Color::operator*(const Color& c) const {
+Color Color::operator*(const Color& c) const 
+{
     return Color(r * c.r, g * c.g, b * c.b);
 }
 
-Color Color::operator*(float f) const {
+Color Color::operator*(float f) const 
+{
     return Color(r * f, g * f, b * f);
 }
 
-Color Color::operator/(float f) const {
+Color Color::operator/(float f) const 
+{
     return Color(r / f, g / f, b / f);
 }
 
-Color& Color::operator+=(const Color& c) {
+Color& Color::operator+=(const Color& c) 
+{
     r += c.r;
     g += c.g;
     b += c.b;
     return *this;
 }
 
-Color& Color::operator-=(const Color& c) {
+Color& Color::operator-=(const Color& c) 
+{
     r -= c.r;
     g -= c.g;
     b -= c.b;
     return *this;
 }
 
-Color& Color::operator*=(const Color& c) {
+Color& Color::operator*=(const Color& c) 
+{
     r *= c.r;
     g *= c.g;
     b *= c.b;
     return *this;
 }
 
-Color& Color::operator*=(float f) {
+Color& Color::operator*=(float f) 
+{
     r *= f;
     g *= f;
     b *= f;
     return *this;
 }
 
-Color& Color::operator/=(float f) {
+Color& Color::operator/=(float f) 
+{
     r /= f;
     g /= f;
     b /= f;
     return *this;
 }
 
-Color Color::mul(const Color& c) const {
+Color Color::mul(const Color& c) const
+{
     return Color(r * c.r, g * c.g, b * c.b);
 }

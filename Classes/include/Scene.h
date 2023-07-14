@@ -1,16 +1,13 @@
-//
-// Created by pierr on 21-May-23.
-//
-
 #ifndef RTX_SCENE_H
 #define RTX_SCENE_H
 
 #include <vector>
 #include "Color.h"
-#include "../Entities/include/Object.h"
-#include "../Entities/include/Light.h"
+#include "Object.h"
+#include "Light.h"
 
-class Scene {
+class Scene 
+{
 public:
     bool shadows;
     Scene();

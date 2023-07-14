@@ -1,9 +1,7 @@
-//
-// Created by pierr on 20-May-23.
-//
-#include "../include/Carre.h"
+#include "Carre.h"
 
-bool Carre::intersect(const Ray &ray, Point &impact) const {
+bool Carre::intersect(const Ray &ray, Point &impact) const 
+{
     Ray lr = globalToLocal(ray).normalized();
     if(lr.vector[2]<0.0001 && lr.vector[2]>-0.0001)return false;
     if(lr.vector[2]*lr.origin[2]>0)return false;

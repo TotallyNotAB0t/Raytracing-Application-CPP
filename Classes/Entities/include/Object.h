@@ -1,23 +1,20 @@
-//
-// Created by pierr on 21-May-23.
-//
-
 #ifndef RTX_OBJECT_H
 #define RTX_OBJECT_H
 
-#include "../../include/Entity.h"
-#include "../../include/Material.h"
+#include "Entity.h"
+#include "Material.h"
 
-class Object : public Entity {
-private:
-    //Material material;
+class Object : public Entity 
+{
 public:
     Material material;
-    Object() {
+    Object() 
+    {
         trans = Matrix();
         transInv = trans.inverse();
     }
-    explicit Object(const Material& mat){
+    explicit Object(const Material& mat)
+    {
         trans = Matrix();
         transInv = trans.inverse();
         material = mat;
@@ -26,7 +23,8 @@ public:
     virtual Point getTextureCoordinates(const Point& p) const = 0;
     virtual Ray getNormal(const Point &p, const Point &o) const = 0;
     virtual bool intersect(const Ray& ray, Point& impact) const = 0;
-    virtual Material getMaterial(const Point& point) const {
+    virtual Material getMaterial(const Point& point) const 
+    {
         return this->material;
     }
 };

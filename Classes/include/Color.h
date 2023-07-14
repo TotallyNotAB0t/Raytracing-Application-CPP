@@ -1,12 +1,9 @@
-//
-// Created by pierr on 21-May-23.
-//
-
 #ifndef RTX_COLOR_H
 #define RTX_COLOR_H
 #include <iostream>
 
-class Color {
+class Color 
+{
 public:
     Color();
     Color(float r, float g, float b);

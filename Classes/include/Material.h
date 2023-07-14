@@ -1,13 +1,10 @@
-//
-// Created by pierr on 21-May-23.
-//
-
 #ifndef RTX_MATERIAL_H
 #define RTX_MATERIAL_H
 
 #include "Color.h"
 
-class Material {
+class Material 
+{
 public:
     Color ka;
     Color kd;

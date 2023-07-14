@@ -1,14 +1,11 @@
-//
-// Created by pierr on 19-May-23.
-//
-
 #ifndef RTX_HVECTOR_H
 #define RTX_HVECTOR_H
 
 #include <iostream>
 #include "Vector.h"
 
-class HVector {
+class HVector 
+{
 public:
     float x;
     float y;

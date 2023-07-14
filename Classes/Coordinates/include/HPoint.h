@@ -1,13 +1,10 @@
-//
-// Created by pierr on 19-May-23.
-//
-
 #ifndef RTX_HPOINT_H
 #define RTX_HPOINT_H
 
 #include "Point.h"
 
-class HPoint {
+class HPoint 
+{
 
 public:
     float x;

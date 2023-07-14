@@ -1,13 +1,10 @@
-//
-// Created by pierr on 21-May-23.
-//
-
 #ifndef RTX_CUBE_H
 #define RTX_CUBE_H
 
 #include "Object.h"
 
-class Cube : public Object {
+class Cube : public Object 
+{
 public:
     Cube() : Object(){};
     Cube(const Material& mat) : Object(mat) {};
