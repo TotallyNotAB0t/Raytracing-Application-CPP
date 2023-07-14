@@ -45,3 +45,21 @@ Point Plan::getTextureCoordinates(const Point& p) const
 
     return Point(x,y,0);
 }
+
+
+Plan::~Plan()
+{
+
+}
+
+Plan::Plan(const Point& p)
+{
+    trans = Matrix();
+    translate(p.x, p.y, p.z);
+}
+
+Plan::Plan(float x, float y, float z)
+{
+    trans = Matrix();
+    translate(x, y, z);
+}
