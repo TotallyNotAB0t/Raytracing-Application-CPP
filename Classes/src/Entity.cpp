@@ -1,6 +1,9 @@
 #include "Entity.h"
 
-Entity::Entity() : trans(Matrix()) {}
+Entity::Entity()
+{
+    translate(0, 0, 0);
+}
 
 Entity::~Entity() {}
 

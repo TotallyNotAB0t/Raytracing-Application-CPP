@@ -43,26 +43,24 @@ int main()
     Light* light1 = new Light();
     light1->translate(1, 1, 1);
 
-    scene.addLight(light1);
+    //scene.addLight(light1);
     scene.addObject(sphere1);
-    scene.addObject(cube1);
+    //scene.addObject(cube1);
 
-    int width = 250;
-    int height = 250;
+    int width = 500;
+    int height = 500;
     std::vector<unsigned char> image(width * height * 3);
 
     for (int y = 0; y < height; ++y) 
     {
         for (int x = 0; x < width; ++x) 
         {
-            float u = float(x) / float(width);
-            float v = float(y) / float(height);
+            float u = (float)x / (float)width;
+            float v = (float)y / (float)height;
             Ray ray = camera.getRay(u, v);
-
             int index = (y * width + x) * 3;
             Point ptrPoint;
             Color colorToPrint = scene.renderScene(ray, ptrPoint);
-            std::cout << colorToPrint[0] << " " << colorToPrint[1] << " " << colorToPrint[2] << std::endl;
             image[index] = colorToPrint[0] * 255.0f;
             image[index + 1] = colorToPrint[1] * 255.0f;
             image[index + 2] = colorToPrint[2] * 255.0f;

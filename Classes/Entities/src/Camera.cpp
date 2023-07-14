@@ -2,11 +2,15 @@
 
 Ray Camera::getRay(float x, float y) const 
 {
-    Ray r(-1+2*x,-1+2*y,0,0,0,0);
-    Point foc(0,0,focal);
-    r.vector = (r.origin - foc);
-    r = localToGlobal(r);
-    return r.normalized();
+    Point origin(x * 2 - 1, y * 2 - 1, 0);
+    Point pointFocal(0, 0, this->focal);
+    Vector dir(origin[0], origin[1], -pointFocal[2]);    
+    dir = this->localToGlobal(dir);
+    std::cout << dir << std::endl;
+    dir = dir.normalized();
+    origin = this->localToGlobal(origin);
+    Ray r(origin, dir);
+    return r;
 }
 
 Camera::Camera(float focal) 

@@ -23,7 +23,7 @@ class Point
         Point operator/(float const& f) const;
         Point operator+(const Vector& v) const;
         Point operator-() const;
-        float norm();
+        float norm() const;
         friend std::ostream& operator<<(std::ostream& os, const Point& p);
         ~Point();
 };

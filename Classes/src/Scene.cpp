@@ -63,7 +63,6 @@ const Light* Scene::getLight(int index) const
 
 Color Scene::renderScene(const Ray& ray, Point& impact) const 
 {
-    Object* closest = nullptr;
     Color color = getBackground();
     Light* light1 = new Light();
     light1->translate(0, 0, 0);
@@ -78,7 +77,6 @@ Color Scene::renderScene(const Ray& ray, Point& impact) const
             {
                 minDist = dist;
                 impact = p;
-                closest = o;
                 color = o->material.kd;
                 Vector* lightPos = new Vector(light1->trans(0, 3), light1->trans(1, 3), light1->trans(2, 3));
                 float n = lightPos->dot(o->getNormal(impact, ray.origin).vector);

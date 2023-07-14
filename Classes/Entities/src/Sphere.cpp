@@ -1,6 +1,6 @@
 #include "Sphere.h"
 
-bool Sphere::intersect(const Ray &ray, Point &impact) const 
+bool Sphere::intersect(const Ray& ray, Point& impact) const
 {
     Ray r = globalToLocal(ray).normalized();
     float a = r.vector.dot(r.vector);
