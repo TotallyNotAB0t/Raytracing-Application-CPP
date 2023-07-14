@@ -11,8 +11,9 @@
 #include "Classes/Entities/include/Sphere.h"
 #include <objbase.h>
 #include "shellapi.h"
-#include "Classes/Entities/include/Cube.h"
+#include "Cube.h"
 #include "Cylinder.h"
+#include "Triangle.h"
 
 void renderImage(Scene& scene, Camera& camera, int width, int height, std::vector<unsigned char>& image, int startY, int endY) 
 {
