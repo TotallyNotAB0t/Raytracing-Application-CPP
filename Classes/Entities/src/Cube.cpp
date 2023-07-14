@@ -1,67 +1,38 @@
 #include "Cube.h"
 
-float Cube::interSide(const Ray& r, int dim, float offset) const
-{
+float Cube::interSide(const Ray& r, int dim, float offset)const{
     float t = -1;
-    if (r.vector[dim]<0.00001 && r.vector[dim]>-0.00001)
-    {
-        return -1;
-    }
+    if(r.vector[dim]<0.00001 && r.vector[dim]>-0.00001)return -1;
     t = (offset-r.origin[dim])/r.vector[dim];
-    if (t < 0)
-    {
-        return -1;
-    }
-    for(int d = 0; d < 3; d++)
-    {
-        if (d == dim)
-        {
-            continue;
-        }
+    if(t<0)return -1;
+    for(int d = 0; d < 3; d++){
+        if(d == dim)continue;
         float x = r.origin[d]+t*r.vector[d];
-        if (x < -1 || x > 1)
-        {
-            return -1;
-        }
+        if(x < -1 || x > 1)return -1;
     }
     return t;
 }
 
-bool Cube::intersect(const Ray& ray, Point& impact) const
-{
-    Ray r = globalToLocal(ray);
+bool Cube::intersect(const Ray& ray, Point& impact)const{
 
-    bool result =false;
-    float localF;
-    float b = 1.f;
+    Ray r = globalToLocal(ray).normalized();
 
-    for(int i =0;i < 6;i++)
-    {
-        if (i == 3)
-        {
-            b = -b;
-        }
-        int j = i%3;
-        float t = (b-r.origin[j])/r.vector[j];
-        Point localimpact = r.origin + t*r.vector;
-        impact = localToGlobal( r.origin + t*r.vector);
-        if(t > 0)
-        {
-            if (localimpact[(j-1)<0?2:(j-1)] >= -1 && localimpact[(j-1)<0?2:(j-1)] <= 1 && localimpact[(j+1)%3] >= -1 && localimpact[(j+1)%3] <= 1 )
-            {
-                result = true;
-                localF =t;
+    float mint = -1;
+    float offsets[]={-1,1};
+    for(int d = 0; d < 3; d++){
+        for(int o = 0; o < 2; o++){
+            float t = interSide(r, d, offsets[o]);
+            if(t>=0 && (mint<0 || mint>t)){
+                mint = t;
             }
         }
     }
 
-    if (!result)
-    {
-        return false;
+    if(mint >= 0){
+        impact = localToGlobal(r.origin+mint*r.vector);
+        return true;
     }
-    impact = localToGlobal( r.origin + localF*r.vector);
-
-    return true;
+    return false;
 }
 
 Ray Cube::getNormal(const Point& p,const Point& o) const

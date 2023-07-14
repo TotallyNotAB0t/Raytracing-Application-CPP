@@ -25,9 +25,12 @@ public:
     Color& operator/=(float f);
 
     Color mul(const Color& c) const;
+    Color mul(const float c) const;
 
 private:
     float r, g, b;
+
+
 };
 
 #endif //RTX_COLOR_H

@@ -14,15 +14,15 @@
 
 int main() 
 {
-    /*Matrix matTest(1, 1, 0, 0,
+    Matrix matTest(1, 1, 0, 0,
                    0, 0, 0, 1,
                    0, 0, 1, 0,
                    1, 0, 0, 0);
     Matrix test;
-    std::cout << matTest << std::endl;
-    std::cout << test << std::endl;
+    //std::cout << matTest << std::endl;
+    //std::cout << test << std::endl;
     test = matTest.inverse();
-    std::cout << test << std::endl;*/
+    //std::cout << test << std::endl;
     //return 0;
 
     Scene scene;
@@ -33,31 +33,34 @@ int main()
     Camera camera(5);
     camera.translate(0, 0, -100);
 
-    Material mat1(Color(0.2, 0.2, 0.8), Color(1, 0, 0), Color(1.0, 1.0, 1.0), 50);
-    Material mat2(Color(0.2, 0.8, 0.8), Color(0, 1, 0), Color(1.0, 1.0, 1.0), 20);
-    Material mat3(Color(1.0, 1.0, 1.0), Color(0, 0, 1), Color(1.0, 1.0, 1.0), 20);
+    Material mat1(Color(1, 0, 0), Color(1, 0, 0), Color(0, 0, 0), 50);
+    Material mat2(Color(0, 1, 0), Color(0, 1, 0), Color(1, 1, 1), 10);
+    Material mat3(Color(0, 0, 1), Color(0, 0, 1), Color(1, 1, 1), 10);
 
     Sphere* sphere1 = new Sphere(mat1);
     sphere1->translate(0, 0, 1);
 
     Sphere* sphere2 = new Sphere(mat2);
-    sphere2->translate(-3, 0, 1);
+    sphere2->translate(-3, 2, 1);
 
     Sphere* sphere3 = new Sphere(mat3);
     sphere3->translate(2, 0, 1);
 
     Cube* cube1 = new Cube(mat3);
     cube1->translate(0, 0, 0);
-    cube1->rotateY(.5f);
-    cube1->rotateX(.5f);
+    //cube1->rotateY(.5f);
+    //cube1->rotateX(.5f);
 
     Light* light1 = new Light();
-    light1->translate(1, 1, 1);
+    light1->id = Color(1, 1, 1);
+    light1->is = Color(0.5, 0.5, 0.5);
+    light1->translate(0, 0, -5);
 
-    //scene.addLight(light1);
-    scene.addObject(sphere1);
+    scene.addLight(light1);
+
+    //scene.addObject(sphere1);
     scene.addObject(sphere2);
-    //scene.addObject(cube1);
+    scene.addObject(cube1);
 
     int width = 500;
     int height = 500;

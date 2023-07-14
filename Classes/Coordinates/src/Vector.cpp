@@ -95,9 +95,9 @@ Vector::~Vector()
     this->z = 0;
 }
 
-Vector Vector::normalized() const 
+Vector Vector::normalized() const
 {
-    return (*this) / norm();
+    return (*this) / vlength();
 }
 
 float Vector::dot(const Vector& v) const 

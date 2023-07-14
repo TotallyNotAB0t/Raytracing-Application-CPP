@@ -5,6 +5,8 @@ Light::Light() : Entity(), id(Color()), is(Color()) {}
 Light::Light(const Point& p, const Color& id, const Color& is) : id(id), is(is) 
 {
     translate(p.x, p.y, p.z);
+    trans = Matrix()*trans;
+    transInv=trans.inverse();
 }
 
 Ray Light::getRayToLight(const Point& p) const 

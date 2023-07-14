@@ -115,3 +115,7 @@ Color Color::mul(const Color& c) const
 {
     return Color(r * c.r, g * c.g, b * c.b);
 }
+Color Color::mul(const float c) const
+{
+    return Color(r * c, g * c, b * c);
+}
