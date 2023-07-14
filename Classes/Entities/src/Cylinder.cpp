@@ -44,3 +44,11 @@ Ray Cylinder::getNormal(const Point& p, const Point& o) const
     }
     return localToGlobal(Ray(lp,Vector(-lp[0],0,-lp[2]))).normalized();
 }
+
+Point Cylinder::getTextureCoordinates(const Point &p) const {
+    return Point();
+}
+
+Cylinder::~Cylinder() {
+
+}

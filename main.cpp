@@ -11,6 +11,7 @@
 #include <objbase.h>
 #include "shellapi.h"
 #include "Classes/Entities/include/Cube.h"
+#include "Cylinder.h"
 
 int main() 
 {
@@ -46,21 +47,26 @@ int main()
     Sphere* sphere3 = new Sphere(mat3);
     sphere3->translate(2, 0, 1);
 
+    Cylinder* cylinder1 = new Cylinder(mat1);
+    cylinder1->translate(-1, 0, 0);
+    cylinder1->rotateZ(.5);
+
     Cube* cube1 = new Cube(mat3);
-    cube1->translate(0, 0, 0);
+    cube1->translate(4, 0, 0);
     //cube1->rotateY(.5f);
     //cube1->rotateX(.5f);
 
     Light* light1 = new Light();
     light1->id = Color(1, 1, 1);
     light1->is = Color(0.5, 0.5, 0.5);
-    light1->translate(0, 0, -5);
+    light1->translate(-1, 0, -2);
 
     scene.addLight(light1);
 
     //scene.addObject(sphere1);
     scene.addObject(sphere2);
     scene.addObject(cube1);
+    scene.addObject(cylinder1);
 
     int width = 500;
     int height = 500;
