@@ -28,6 +28,7 @@ public:
 
     float dot(const Vector& v) const;
     float dot(const Point& p) const;
+    Vector cross(const Vector& v2);
 
     Vector operator-() const;
     Vector operator+(Vector const& v) const;

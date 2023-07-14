@@ -162,3 +162,11 @@ Vector operator*(float val, const Vector &v)
 {
     return Vector(val * v.x, val * v.y, val * v.z);
 }
+
+Vector Vector::cross(const Vector& v2) 
+{
+    float x = this->y * v2.z - this->z * v2.y;
+    float y = this->z * v2.x - this->x * v2.z;
+    float z = this->x * v2.y - this->y * v2.x;
+    return Vector(x, y, z);
+}
