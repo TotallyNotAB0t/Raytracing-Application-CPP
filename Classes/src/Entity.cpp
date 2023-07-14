@@ -30,6 +30,7 @@ void Entity::scale(float factor)
 void Entity::rotateX(float deg)
 {
     Matrix m;
+    deg *= M_PI/180;
     float c  = std::cos(deg);
     float s  = std::sin(deg);
     m(1,1) = c;
@@ -43,6 +44,7 @@ void Entity::rotateX(float deg)
 void Entity::rotateY(float deg)
 {
     Matrix m;
+    deg *= M_PI/180;
     float c  = cos(deg);
     float s  = sin(deg);
     m(0,0) = c;
@@ -56,6 +58,7 @@ void Entity::rotateY(float deg)
 void Entity::rotateZ(float deg)
 {
     Matrix m;
+    deg *= M_PI/180;
     float c = cos(deg);
     float s = sin(deg);
     m(0,0) = c;
