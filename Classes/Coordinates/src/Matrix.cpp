@@ -183,7 +183,8 @@ Matrix Matrix::inverse() const
 
     if (det == 0)
     {
-        throw std::runtime_error("Matrix is not invertible.");
+        std::cout << "Matrix not invertible" << std::endl;
+        return Matrix();
     }
 
     det = 1.0 / det;

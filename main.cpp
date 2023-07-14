@@ -14,6 +14,17 @@
 
 int main() 
 {
+    /*Matrix matTest(1, 1, 0, 0,
+                   0, 0, 0, 1,
+                   0, 0, 1, 0,
+                   1, 0, 0, 0);
+    Matrix test;
+    std::cout << matTest << std::endl;
+    std::cout << test << std::endl;
+    test = matTest.inverse();
+    std::cout << test << std::endl;*/
+    //return 0;
+
     Scene scene;
     scene.setBackground(Color(0.2, 0.2, 0.2));
     scene.shadows = true;
@@ -45,6 +56,7 @@ int main()
 
     //scene.addLight(light1);
     scene.addObject(sphere1);
+    scene.addObject(sphere2);
     //scene.addObject(cube1);
 
     int width = 500;
