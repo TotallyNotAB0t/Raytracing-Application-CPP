@@ -1,6 +1,7 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 
 #include <vector>
+#include <thread>
 #include "lib/include/stb_image_write.h"
 #include "Objects/include/InstantiableObject.h"
 #include "Classes/Coordinates/include/Matrix.h"
@@ -13,19 +14,26 @@
 #include "Classes/Entities/include/Cube.h"
 #include "Cylinder.h"
 
-int main() 
+void renderImage(Scene& scene, Camera& camera, int width, int height, std::vector<unsigned char>& image, int startY, int endY) 
 {
-    Matrix matTest(1, 1, 0, 0,
-                   0, 0, 0, 1,
-                   0, 0, 1, 0,
-                   1, 0, 0, 0);
-    Matrix test;
-    //std::cout << matTest << std::endl;
-    //std::cout << test << std::endl;
-    test = matTest.inverse();
-    //std::cout << test << std::endl;
-    //return 0;
+    for (int y = startY; y < endY; ++y) 
+    {
+        for (int x = 0; x < width; ++x) 
+        {
+            float u = (float)x / (float)width;
+            float v = (float)y / (float)height;
+            Ray ray = camera.getRay(u, v);
+            int index = (y * width + x) * 3;
+            Point ptrPoint;
+            Color colorToPrint = scene.renderScene(ray, ptrPoint);
+            image[index] = colorToPrint[0] * 255.0f;
+            image[index + 1] = colorToPrint[1] * 255.0f;
+            image[index + 2] = colorToPrint[2] * 255.0f;
+        }
+    }
+}
 
+int main() {
     Scene scene;
     scene.setBackground(Color(0.2, 0.2, 0.2));
     scene.shadows = true;
@@ -53,8 +61,6 @@ int main()
 
     Cube* cube1 = new Cube(mat3);
     cube1->translate(4, 0, 0);
-    //cube1->rotateY(.5f);
-    //cube1->rotateX(.5f);
 
     Light* light1 = new Light();
     light1->id = Color(1, 1, 1);
@@ -63,7 +69,6 @@ int main()
 
     scene.addLight(light1);
 
-    //scene.addObject(sphere1);
     scene.addObject(sphere2);
     scene.addObject(cube1);
     scene.addObject(cylinder1);
@@ -72,20 +77,19 @@ int main()
     int height = 500;
     std::vector<unsigned char> image(width * height * 3);
 
-    for (int y = 0; y < height; ++y) 
+    int numThreads = std::thread::hardware_concurrency();
+    std::vector<std::thread> threads(numThreads);
+
+    for (int i = 0; i < numThreads; ++i) 
     {
-        for (int x = 0; x < width; ++x) 
-        {
-            float u = (float)x / (float)width;
-            float v = (float)y / (float)height;
-            Ray ray = camera.getRay(u, v);
-            int index = (y * width + x) * 3;
-            Point ptrPoint;
-            Color colorToPrint = scene.renderScene(ray, ptrPoint);
-            image[index] = colorToPrint[0] * 255.0f;
-            image[index + 1] = colorToPrint[1] * 255.0f;
-            image[index + 2] = colorToPrint[2] * 255.0f;
-        }
+        int startY = (height / numThreads) * i;
+        int endY = (i == numThreads - 1) ? height : (height / numThreads) * (i + 1);
+        threads[i] = std::thread(renderImage, std::ref(scene), std::ref(camera), width, height, std::ref(image), startY, endY);
+    }
+
+    for (auto& thread : threads) 
+    {
+        thread.join();
     }
 
     stbi_write_jpg("output.jpg", width, height, 3, image.data(), 100);
