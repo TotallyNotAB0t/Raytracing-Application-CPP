@@ -21,3 +21,14 @@ bool Carre::intersect(const Ray &ray, Point &impact) const
     return true;
 }
 
+Carre::~Carre() {
+
+}
+
+Ray Carre::getNormal(const Point &p, const Point &o) const {
+    return Ray();
+}
+
+Point Carre::getTextureCoordinates(const Point &p) const {
+    return Point();
+}

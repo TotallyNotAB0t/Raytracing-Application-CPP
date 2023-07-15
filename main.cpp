@@ -3,7 +3,6 @@
 #include <vector>
 #include <thread>
 #include "lib/include/stb_image_write.h"
-#include "Objects/include/InstantiableObject.h"
 #include "Classes/Coordinates/include/Matrix.h"
 #include "Classes/include/Scene.h"
 #include "Classes/Entities/include/Object.h"
@@ -14,6 +13,9 @@
 #include "Cube.h"
 #include "Cylinder.h"
 #include "Triangle.h"
+#include "lib/include/json.hpp"
+#include "fstream"
+#include "Carre.h"
 
 void renderImage(Scene& scene, Camera& camera, int width, int height, std::vector<unsigned char>& image, int startY, int endY) 
 {
@@ -35,6 +37,41 @@ void renderImage(Scene& scene, Camera& camera, int width, int height, std::vecto
 }
 
 int main() {
+    std::ifstream file("myScene.json");
+    if (!file) {
+        std::cerr << "Unable to open file";
+        exit(1);
+    }
+
+    nlohmann::json jsonData;
+    file >> jsonData;
+
+    // TODO TROUVER UNE MANIERE MOINS DEGUEU DE PARSE !!!
+    for (const auto& object : jsonData) {
+        // Getting data
+        std::string objectType = object["ObjectType"];
+        Object* myObj;
+        if (objectType == "Sphere"){
+            myObj = new Sphere();
+        }
+        else if (objectType == "Carre"){
+            Carre();
+        }
+        else if (objectType == "Cube"){
+            Cube();
+        }
+        double positionX = object["PositionX"];
+        double positionY = object["PositionY"];
+        double positionZ = object["PositionZ"];
+        std::string material = object["Material"];
+        double scale = object["Scale"];
+
+        // Instanciating objects
+        myObj->translate(positionX, positionY, positionZ);
+        myObj->scale(scale);
+        
+    }
+
     Scene scene;
     scene.setBackground(Color(0.2, 0.2, 0.2));
     scene.shadows = true;
