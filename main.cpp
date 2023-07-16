@@ -37,41 +37,6 @@ void renderImage(Scene& scene, Camera& camera, int width, int height, std::vecto
 }
 
 int main() {
-    std::ifstream file("myScene.json");
-    if (!file) {
-        std::cerr << "Unable to open file";
-        exit(1);
-    }
-
-    nlohmann::json jsonData;
-    file >> jsonData;
-
-    // TODO TROUVER UNE MANIERE MOINS DEGUEU DE PARSE !!!
-    for (const auto& object : jsonData) {
-        // Getting data
-        std::string objectType = object["ObjectType"];
-        Object* myObj;
-        if (objectType == "Sphere"){
-            myObj = new Sphere();
-        }
-        else if (objectType == "Carre"){
-            Carre();
-        }
-        else if (objectType == "Cube"){
-            Cube();
-        }
-        double positionX = object["PositionX"];
-        double positionY = object["PositionY"];
-        double positionZ = object["PositionZ"];
-        std::string material = object["Material"];
-        double scale = object["Scale"];
-
-        // Instanciating objects
-        myObj->translate(positionX, positionY, positionZ);
-        myObj->scale(scale);
-        
-    }
-
     Scene scene;
     scene.setBackground(Color(0.2, 0.2, 0.2));
     scene.shadows = true;
@@ -84,7 +49,51 @@ int main() {
     Material mat2(Color(0, 1, 0), Color(0, 1, 0), Color(1, 1, 1), 10);
     Material mat3(Color(0, 0, 1), Color(0, 0, 1), Color(1, 1, 1), 10);
 
-    Sphere* sphere1 = new Sphere(mat1);
+    std::ifstream file("myScene.txt");
+    if (!file.is_open()) {
+        std::cerr << "Failed to open the file." << std::endl;
+        return 1;
+    }
+
+    std::string line;
+    while (std::getline(file, line)) {
+        std::istringstream iss(line);
+        std::string objectType;
+        float params[7];
+
+        if (!(iss >> objectType)) {
+            std::cerr << "Failed to read object type from line: " << line << std::endl;
+            continue;
+        }
+
+        for (int i = 0; i < 7; i++) {
+            if (!(iss >> params[i])) {
+                std::cerr << "Failed to read parameter " << i << " from line: " << line << std::endl;
+                break;
+            }
+        }
+        Object* myObject;
+        // Create the object based on the object type
+        if (objectType == "Sphere") {
+            Sphere* sphere = new Sphere(mat1);
+            myObject = sphere;
+        } else if (objectType == "Cube") {
+            Cube* cube = new Cube(mat2);
+            myObject = cube;
+        } else if (objectType == "Cylinder") {
+            Cylinder* cylinder = new Cylinder(mat3);
+            myObject = cylinder;
+        } else {
+            std::cerr << "Unknown object type: " << objectType << std::endl;
+        }
+        myObject->translate(params[0], params[1], params[2]);
+        myObject->rotateX(params[3]);
+        myObject->rotateY(params[4]);
+        myObject->rotateZ(params[5]);
+        scene.addObject(myObject);
+    }
+
+/*    Sphere* sphere1 = new Sphere(mat1);
     sphere1->translate(0, 0, 1);
 
     Sphere* sphere2 = new Sphere(mat2);
@@ -100,16 +109,17 @@ int main() {
     Cube* cube1 = new Cube(mat3);
     cube1->translate(4, 0, 0);
 
+    scene.addObject(sphere2);
+    scene.addObject(cube1);
+    scene.addObject(cylinder1);*/
+
+
     Light* light1 = new Light();
     light1->id = Color(1, 1, 1);
     light1->is = Color(0.5, 0.5, 0.5);
     light1->translate(-1, 0, -2);
 
     scene.addLight(light1);
-
-    scene.addObject(sphere2);
-    scene.addObject(cube1);
-    scene.addObject(cylinder1);
 
     int width = 500;
     int height = 500;
