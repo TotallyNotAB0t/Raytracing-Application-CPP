@@ -45,74 +45,60 @@ int main() {
     Camera camera(5);
     camera.translate(0, 0, -100);
 
-    Material mat1(Color(1, 0, 0), Color(1, 0, 0), Color(0, 0, 0), 50);
-    Material mat2(Color(0, 1, 0), Color(0, 1, 0), Color(1, 1, 1), 10);
-    Material mat3(Color(0, 0, 1), Color(0, 0, 1), Color(1, 1, 1), 10);
-
     std::ifstream file("myScene.txt");
-    if (!file.is_open()) {
-        std::cerr << "Failed to open the file." << std::endl;
-        return 1;
-    }
-
     std::string line;
+
+    Object* myObject;
+    std::map<std::string, Material> materialMap;
+    std::vector<float> params(10);
+
     while (std::getline(file, line)) {
         std::istringstream iss(line);
-        std::string objectType;
-        float params[7];
-
+        std::string objectType, materialName;
         if (!(iss >> objectType)) {
             std::cerr << "Failed to read object type from line: " << line << std::endl;
             continue;
         }
-
-        for (int i = 0; i < 7; i++) {
-            if (!(iss >> params[i])) {
-                std::cerr << "Failed to read parameter " << i << " from line: " << line << std::endl;
-                break;
+        // If line is a material
+        if (objectType == "Material") {
+            if (!(iss >> materialName >> params[0] >> params[1] >> params[2] >> params[3] >> params[4] >> params[5]
+                      >> params[6] >> params[7] >> params[8] >> params[9])) {
+                std::cerr << "Failed to parse material from line: " << line << std::endl;
+                continue;
             }
-        }
-        Object* myObject;
-        // Create the object based on the object type
-        if (objectType == "Sphere") {
-            Sphere* sphere = new Sphere(mat1);
-            myObject = sphere;
-        } else if (objectType == "Cube") {
-            Cube* cube = new Cube(mat2);
-            myObject = cube;
-        } else if (objectType == "Cylinder") {
-            Cylinder* cylinder = new Cylinder(mat3);
-            myObject = cylinder;
+            materialMap[materialName] = Material(Color(params[0], params[1], params[2]),
+                                                 Color(params[3], params[4], params[5]),
+                                                 Color(params[6], params[7], params[8]), params[9]);
         } else {
-            std::cerr << "Unknown object type: " << objectType << std::endl;
+            //If line is an object
+            if (!(iss >> materialName >> params[0] >> params[1] >> params[2] >> params[3] >> params[4] >> params[5]
+                      >> params[6])) {
+                std::cerr << "Failed to parse object from line: " << line << std::endl;
+                continue;
+            }
+
+            if (materialMap.find(materialName) == materialMap.end()) {
+                std::cerr << "Material '" << materialName << "' not found for object: " << line << std::endl;
+                continue;
+            }
+
+            if (objectType == "Sphere") {
+                myObject = new Sphere(materialMap[materialName]);
+            } else if (objectType == "Cube") {
+                myObject = new Cube(materialMap[materialName]);
+            } else if (objectType == "Cylinder") {
+                myObject = new Cylinder(materialMap[materialName]);
+            } else {
+                std::cerr << "Unknown object type: " << objectType << std::endl;
+                continue;
+            }
+            myObject->translate(params[0], params[1], params[2]);
+            myObject->rotateX(params[3]);
+            myObject->rotateY(params[4]);
+            myObject->rotateZ(params[5]);
+            scene.addObject(myObject);
         }
-        myObject->translate(params[0], params[1], params[2]);
-        myObject->rotateX(params[3]);
-        myObject->rotateY(params[4]);
-        myObject->rotateZ(params[5]);
-        scene.addObject(myObject);
     }
-
-/*    Sphere* sphere1 = new Sphere(mat1);
-    sphere1->translate(0, 0, 1);
-
-    Sphere* sphere2 = new Sphere(mat2);
-    sphere2->translate(-3, 2, 1);
-
-    Sphere* sphere3 = new Sphere(mat3);
-    sphere3->translate(2, 0, 1);
-
-    Cylinder* cylinder1 = new Cylinder(mat1);
-    cylinder1->translate(-1, 0, 0);
-    cylinder1->rotateZ(.5);
-
-    Cube* cube1 = new Cube(mat3);
-    cube1->translate(4, 0, 0);
-
-    scene.addObject(sphere2);
-    scene.addObject(cube1);
-    scene.addObject(cylinder1);*/
-
 
     Light* light1 = new Light();
     light1->id = Color(1, 1, 1);
@@ -128,14 +114,14 @@ int main() {
     int numThreads = std::thread::hardware_concurrency();
     std::vector<std::thread> threads(numThreads);
 
-    for (int i = 0; i < numThreads; ++i) 
+    for (int i = 0; i < numThreads; ++i)
     {
         int startY = (height / numThreads) * i;
         int endY = (i == numThreads - 1) ? height : (height / numThreads) * (i + 1);
         threads[i] = std::thread(renderImage, std::ref(scene), std::ref(camera), width, height, std::ref(image), startY, endY);
     }
 
-    for (auto& thread : threads) 
+    for (auto& thread : threads)
     {
         thread.join();
     }
