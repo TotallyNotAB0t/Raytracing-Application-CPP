@@ -69,7 +69,21 @@ int main() {
             materialMap[materialName] = Material(Color(params[0], params[1], params[2]),
                                                  Color(params[3], params[4], params[5]),
                                                  Color(params[6], params[7], params[8]), params[9]);
-        } else {
+        }
+        // If the line is a light
+        else if (objectType == "Light") {
+            if (!(iss >> params[0] >> params[1] >> params[2] >> params[3] >> params[4] >> params[5] >> params[6] >> params[7] >> params[8])) {
+                std::cerr << "Failed to parse light from line: " << line << std::endl;
+                continue;
+            }
+            std::cout << params[3] << ' ' << params[4] << ' ' << params[5] << ' ' << params[6] << ' ' << params[7] << ' ' << params[8] << std::endl;
+            Light* light = new Light(Point(params[0], params[1], params[2]),
+                                     Color(params[3], params[4], params[5]),
+                                     Color(params[6], params[7], params[8]));
+            scene.addLight(light);
+        }
+        // If the line is an object
+        else {
             //If line is an object
             if (!(iss >> materialName >> params[0] >> params[1] >> params[2] >> params[3] >> params[4] >> params[5]
                       >> params[6])) {
@@ -99,13 +113,6 @@ int main() {
             scene.addObject(myObject);
         }
     }
-
-    Light* light1 = new Light();
-    light1->id = Color(1, 1, 1);
-    light1->is = Color(0.5, 0.5, 0.5);
-    light1->translate(-1, 0, -2);
-
-    scene.addLight(light1);
 
     int width = 500;
     int height = 500;
