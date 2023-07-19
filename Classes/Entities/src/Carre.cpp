@@ -21,3 +21,29 @@ bool Carre::intersect(const Ray &ray, Point &impact) const
     return true;
 }
 
+Ray Carre::getNormal(const Point& p, const Point& o) const {
+    Point lp = globalToLocal(p);
+    Point lo = globalToLocal(o);
+
+    Vector v1(1, 0, 0);  // First vector on the square's plane
+    Vector v2(0, 1, 0);  // Second vector on the square's plane
+
+    Vector normal = v1.cross(v2).normalized();  // Calculate the normal using cross product
+
+    if (lo[0] < 1 && lo[0] > -1 && lo[1] < 1 && lo[1] > -1) {
+        return localToGlobal(Ray(lp, -normal)).normalized();
+    }
+    return localToGlobal(Ray(lp, normal)).normalized();
+}
+
+Point Carre::getTextureCoordinates(const Point& p) const {
+    Point lp = globalToLocal(p);
+    if (lp[0] > 0.999 || lp[0] < -0.999) { return Point(lp[1] / 2 + 0.5, 0, lp[1] / 2 + 0.5); }
+    if (lp[1] > 0.999 || lp[1] < -0.999) { return Point(lp[0] / 2 + 0.5, 0, lp[0] / 2 + 0.5); }
+    return Point(0, 0, 0);
+}
+
+Carre::~Carre()
+{
+
+}

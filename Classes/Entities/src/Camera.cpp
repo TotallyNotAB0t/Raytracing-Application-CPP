@@ -15,6 +15,19 @@ Camera::Camera(float focal)
 {
     this->focal = focal;
 }
+void Camera::rotateY(float deg)
+{
+    Matrix m;
+    deg *= -M_PI/180;
+    float c  = cos(deg);
+    float s  = sin(deg);
+    m(0,0) = c;
+    m(0,2) = s;
+    m(2,0) = -s;
+    m(2,2) = c;
+    trans = m*trans;
+    transInv=trans.inverse();
+}
 
 Camera::~Camera() 
 {

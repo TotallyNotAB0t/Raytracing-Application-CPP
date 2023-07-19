@@ -18,7 +18,7 @@ public:
     void translate(float x, float y, float z);
     void scale(float factor);
     void rotateX(float deg);
-    void rotateY(float deg);
+    virtual void rotateY(float deg);
     void rotateZ(float deg);
 
     Point localToGlobal(const Point& p) const;

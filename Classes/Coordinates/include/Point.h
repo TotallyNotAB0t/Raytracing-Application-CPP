@@ -16,6 +16,7 @@ class Point
         float dot(const Point& p) const;
         float operator[](int val) const;
         float& operator[](int val);
+        bool operator==(Point const& p) const;
         Point operator+(Point const& p) const;
         Point operator-(Point const& p) const;
         Point operator*(Point const& p) const;

@@ -13,8 +13,8 @@ Ray Light::getRayToLight(const Point& p) const
 {
     Point pLocal = globalToLocal(p);
     Point originLocal(0, 0, 0);
-    Vector vectorLocal = getVectorToLight(pLocal);
-    Ray rayLocal = Ray(originLocal, vectorLocal);
+    Vector vectorLocal = getVectorToLight(p);
+    Ray rayLocal = Ray(pLocal, vectorLocal);
     return localToGlobal(rayLocal);
 }
 
@@ -22,7 +22,7 @@ Ray Light::getRayFromLight(const Point& p) const
 {
     Point pLocal = globalToLocal(p);
     Point originLocal(0, 0, 0);
-    Vector vectorLocal = getVectorFromLight(pLocal);
+    Vector vectorLocal = getVectorFromLight(p);
     Ray rayLocal = Ray(originLocal, vectorLocal);
     return localToGlobal(rayLocal);
 }

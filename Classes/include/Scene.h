@@ -21,7 +21,9 @@ public:
     Color getBackground() const;
     Color getAmbiant() const;
     int nbLights() const;
+    int nbObject() const;
     const Light* getLight(int index) const;
+    const Object* getObject(int index) const;
     Color renderScene(const Ray& ray, Point& impact) const;
 
 private:
@@ -31,6 +33,8 @@ private:
     Color ambiant;
 
     Color getImpactColor(const Ray& ray, const Object& obj, const Point& impact, const Scene& scene) const;
+
+    bool GetShadow(const Point &impact, const Scene &scene, const Light& light) const;
 };
 
 #endif //RTX_SCENE_H

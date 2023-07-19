@@ -11,6 +11,8 @@ public:
     virtual ~Camera();
 
     Ray getRay(float x, float y) const;
+
+    void rotateY(float deg) override;
 };
 
 #endif //RTX_CAMERA_H
