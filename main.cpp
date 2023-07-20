@@ -42,9 +42,6 @@ void renderImage(Scene& scene, Camera& camera, int width, int height, std::vecto
     }
 }
 
-// PLACEHOLDER POUR SHADOW
-static bool shadow = false;
-
 //int main (int argc, char **argv)
 //{
 //    struct option options[5];
@@ -177,15 +174,16 @@ int main(int argc, char** argv) {
     }
     outputFileName += ".jpg";
 
-    if (options[4].count)
-    {
-        shadow = true;
-    }
+
 
     // Main loop
     Scene scene;
     scene.setBackground(Color(0.2, 0.2, 0.2));
-    scene.shadows = true;
+    if (options[4].count)
+    {
+        scene.shadows = true;
+    }
+
     scene.setAmbiant(Color(0.1, 0.1, 0.1));
 
     Camera camera(5);
