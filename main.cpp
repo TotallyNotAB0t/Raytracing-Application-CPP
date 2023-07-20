@@ -9,13 +9,19 @@
 #include "Classes/Entities/include/Camera.h"
 #include "Classes/Entities/include/Sphere.h"
 #include <objbase.h>
+#include <map>
+#include <sstream>
 #include "shellapi.h"
 #include "Cube.h"
 #include "Cylinder.h"
 #include "Triangle.h"
-#include "lib/include/json.hpp"
 #include "fstream"
 #include "Carre.h"
+#include "Plan.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include "gopt.h"
 
 void renderImage(Scene& scene, Camera& camera, int width, int height, std::vector<unsigned char>& image, int startY, int endY) 
 {
@@ -36,7 +42,147 @@ void renderImage(Scene& scene, Camera& camera, int width, int height, std::vecto
     }
 }
 
-int main() {
+// PLACEHOLDER POUR SHADOW
+static bool shadow = false;
+
+//int main (int argc, char **argv)
+//{
+//    struct option options[5];
+//
+//    options[0].long_name  = "scene";
+//    options[0].short_name = 's';
+//    options[0].flags      = GOPT_ARGUMENT_REQUIRED;
+//
+//    options[1].long_name  = "height";
+//    options[1].short_name = 'h';
+//    options[1].flags      = GOPT_ARGUMENT_REQUIRED;
+//
+//    options[2].long_name  = "width";
+//    options[2].short_name = 'w';
+//    options[2].flags      = GOPT_ARGUMENT_REQUIRED;
+//
+//    options[3].long_name  = "output";
+//    options[3].short_name = 'o';
+//    options[3].flags      = GOPT_ARGUMENT_REQUIRED;
+//
+//    options[4].flags      = GOPT_LAST;
+//
+//    argc = gopt (argv, options);
+//
+//    gopt_errors (argv[0], options);
+//
+//    if (options[0].count)
+//    {
+//        std::cout << "MANAL" << std::endl;
+//        //fprintf (stdout, "see the manual\n");
+//        //exit (EXIT_SUCCESS);
+//    }
+//
+//    if (options[1].count)
+//    {
+//        fprintf (stdout, "version 1.0\n");
+//        //exit (EXIT_SUCCESS);
+//    }
+//
+//    if (options[2].count >= 1)
+//    {
+//        fputs ("being verbose\n", stderr);
+//    }
+//
+//    if (options[2].count >= 2)
+//    {
+//        fputs ("being very verbose\n", stderr);
+//    }
+//
+//    if (options[3].count) {
+//        std::cout << options[3].argument << std::endl;
+//    }
+//
+//    return 0;
+//}
+
+int main(int argc, char** argv) {
+
+    // Settings
+    std::string fileName = "myScene";
+    std::string outputFileName = "output";
+    int width = 500;
+    int height = 500;
+
+    // Reading arguments if any
+    struct option options[6];
+
+    options[0].long_name  = "scene";
+    options[0].short_name = 's';
+    options[0].flags      = GOPT_ARGUMENT_REQUIRED;
+
+    options[1].long_name  = "height";
+    options[1].short_name = 'h';
+    options[1].flags      = GOPT_ARGUMENT_REQUIRED;
+
+    options[2].long_name  = "width";
+    options[2].short_name = 'w';
+    options[2].flags      = GOPT_ARGUMENT_REQUIRED;
+
+    options[3].long_name  = "output";
+    options[3].short_name = 'o';
+    options[3].flags      = GOPT_ARGUMENT_REQUIRED;
+
+    options[4].long_name  = "shadows";
+    options[4].short_name = 'd';
+    options[4].flags      = GOPT_ARGUMENT_FORBIDDEN;
+
+    options[5].flags      = GOPT_LAST;
+
+    gopt(argv, options);
+
+    gopt_errors(argv[0], options);
+
+    if (options[0].count)
+    {
+        fileName = options[0].argument;
+    }
+
+    fileName += ".txt";
+    std::ifstream file(fileName);
+    if (!file.is_open()) {
+        std::cerr << "Failed to open the file : " << fileName << ", opening myScene.txt instead." << std::endl;
+        file.close();
+        file.open("myScene.txt");
+    }
+
+    if (options[1].count)
+    {
+        height = atoi(options[1].argument);
+        if (height <= 0)
+        {
+            std::cout << options[1].long_name << " argument is not correct. Defaulting to 500." << std::endl;
+            height = 500;
+        }
+    }
+
+    if (options[2].count)
+    {
+        width = atoi(options[2].argument);
+        if (width <= 0)
+        {
+            std::cout << options[2].long_name << " argument is not correct. Defaulting to 500." << std::endl;
+            width = 500;
+        }
+    }
+
+    if (options[3].count)
+    {
+        outputFileName = options[3].argument;
+    }
+    outputFileName += ".jpg";
+
+    if (options[4].count)
+    {
+        shadow = true;
+    }
+
+    // Main loop
     Scene scene;
     scene.setBackground(Color(0.2, 0.2, 0.2));
     scene.shadows = true;
@@ -45,13 +191,11 @@ int main() {
     Camera camera(5);
     camera.translate(0, 0, -100);
 
-    std::ifstream file("myScene.txt");
     std::string line;
 
     Object* myObject;
     std::map<std::string, Material> materialMap;
     std::vector<float> params(10);
-
     while (std::getline(file, line)) {
         std::istringstream iss(line);
         std::string objectType, materialName;
@@ -76,7 +220,6 @@ int main() {
                 std::cerr << "Failed to parse light from line: " << line << std::endl;
                 continue;
             }
-            std::cout << params[3] << ' ' << params[4] << ' ' << params[5] << ' ' << params[6] << ' ' << params[7] << ' ' << params[8] << std::endl;
             Light* light = new Light(Point(params[0], params[1], params[2]),
                                      Color(params[3], params[4], params[5]),
                                      Color(params[6], params[7], params[8]));
@@ -84,7 +227,6 @@ int main() {
         }
         // If the line is an object
         else {
-            //If line is an object
             if (!(iss >> materialName >> params[0] >> params[1] >> params[2] >> params[3] >> params[4] >> params[5]
                       >> params[6])) {
                 std::cerr << "Failed to parse object from line: " << line << std::endl;
@@ -102,6 +244,8 @@ int main() {
                 myObject = new Cube(materialMap[materialName]);
             } else if (objectType == "Cylinder") {
                 myObject = new Cylinder(materialMap[materialName]);
+            } else if (objectType == "Plan") {
+                myObject = new Plan(materialMap[materialName]);
             } else {
                 std::cerr << "Unknown object type: " << objectType << std::endl;
                 continue;
@@ -113,9 +257,8 @@ int main() {
             scene.addObject(myObject);
         }
     }
+    file.close();
 
-    int width = 500;
-    int height = 500;
     std::vector<unsigned char> image(width * height * 3);
 
     int numThreads = std::thread::hardware_concurrency();
@@ -133,9 +276,16 @@ int main() {
         thread.join();
     }
 
-    stbi_write_jpg("output.jpg", width, height, 3, image.data(), 100);
+    const char* charFileName = outputFileName.c_str();
+
+    std::string pathName = ".\\";
+    pathName += outputFileName;
+
+    const char* pathCharFileName = pathName.c_str();
+
+    stbi_write_jpg(charFileName, width, height, 3, image.data(), 100);
 
     CoInitializeEx(NULL, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE);
-    ShellExecuteA(NULL, "open", ".\\output.jpg", NULL, NULL, SW_SHOWDEFAULT);
+    ShellExecuteA(NULL, "open", pathCharFileName, NULL, NULL, SW_SHOWDEFAULT);
     return 0;
 }
