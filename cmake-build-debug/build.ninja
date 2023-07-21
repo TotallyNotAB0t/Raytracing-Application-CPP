@@ -182,20 +182,6 @@ build CMakeFiles/RTX.dir/Classes/src/Scene.cpp.obj: CXX_COMPILER__RTX_Debug C$:/
   OBJECT_DIR = CMakeFiles\RTX.dir
   OBJECT_FILE_DIR = CMakeFiles\RTX.dir\Classes\src
 
-build CMakeFiles/RTX.dir/lib/include/gopt-errors.c.obj: C_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/lib/include/gopt-errors.c || cmake_object_order_depends_target_RTX
-  DEP_FILE = CMakeFiles\RTX.dir\lib\include\gopt-errors.c.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/Coordinates/include -IC:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/Entities/include -IC:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/include -IC:/Users/pierr/Downloads/Cours/Cpp/RTX/lib/include
-  OBJECT_DIR = CMakeFiles\RTX.dir
-  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\lib\include
-
-build CMakeFiles/RTX.dir/lib/include/gopt.c.obj: C_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/lib/include/gopt.c || cmake_object_order_depends_target_RTX
-  DEP_FILE = CMakeFiles\RTX.dir\lib\include\gopt.c.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/Coordinates/include -IC:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/Entities/include -IC:/Users/pierr/Downloads/Cours/Cpp/RTX/Classes/include -IC:/Users/pierr/Downloads/Cours/Cpp/RTX/lib/include
-  OBJECT_DIR = CMakeFiles\RTX.dir
-  OBJECT_FILE_DIR = CMakeFiles\RTX.dir\lib\include
-
 build CMakeFiles/RTX.dir/main.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/Downloads/Cours/Cpp/RTX/main.cpp || cmake_object_order_depends_target_RTX
   DEP_FILE = CMakeFiles\RTX.dir\main.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++20
@@ -211,7 +197,7 @@ build CMakeFiles/RTX.dir/main.cpp.obj: CXX_COMPILER__RTX_Debug C$:/Users/pierr/D
 #############################################
 # Link the executable RTX.exe
 
-build RTX.exe: CXX_EXECUTABLE_LINKER__RTX_Debug CMakeFiles/RTX.dir/Classes/Coordinates/src/HPoint.cpp.obj CMakeFiles/RTX.dir/Classes/Coordinates/src/HRay.cpp.obj CMakeFiles/RTX.dir/Classes/Coordinates/src/HVector.cpp.obj CMakeFiles/RTX.dir/Classes/Coordinates/src/Matrix.cpp.obj CMakeFiles/RTX.dir/Classes/Coordinates/src/Point.cpp.obj CMakeFiles/RTX.dir/Classes/Coordinates/src/Ray.cpp.obj CMakeFiles/RTX.dir/Classes/Coordinates/src/Vector.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Camera.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Carre.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Cube.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Cylinder.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Light.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Plan.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Sphere.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Triangle.cpp.obj CMakeFiles/RTX.dir/Classes/src/Color.cpp.obj CMakeFiles/RTX.dir/Classes/src/Entity.cpp.obj CMakeFiles/RTX.dir/Classes/src/Material.cpp.obj CMakeFiles/RTX.dir/Classes/src/Scene.cpp.obj CMakeFiles/RTX.dir/lib/include/gopt-errors.c.obj CMakeFiles/RTX.dir/lib/include/gopt.c.obj CMakeFiles/RTX.dir/main.cpp.obj
+build RTX.exe: CXX_EXECUTABLE_LINKER__RTX_Debug CMakeFiles/RTX.dir/Classes/Coordinates/src/HPoint.cpp.obj CMakeFiles/RTX.dir/Classes/Coordinates/src/HRay.cpp.obj CMakeFiles/RTX.dir/Classes/Coordinates/src/HVector.cpp.obj CMakeFiles/RTX.dir/Classes/Coordinates/src/Matrix.cpp.obj CMakeFiles/RTX.dir/Classes/Coordinates/src/Point.cpp.obj CMakeFiles/RTX.dir/Classes/Coordinates/src/Ray.cpp.obj CMakeFiles/RTX.dir/Classes/Coordinates/src/Vector.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Camera.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Carre.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Cube.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Cylinder.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Light.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Plan.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Sphere.cpp.obj CMakeFiles/RTX.dir/Classes/Entities/src/Triangle.cpp.obj CMakeFiles/RTX.dir/Classes/src/Color.cpp.obj CMakeFiles/RTX.dir/Classes/src/Entity.cpp.obj CMakeFiles/RTX.dir/Classes/src/Material.cpp.obj CMakeFiles/RTX.dir/Classes/src/Scene.cpp.obj CMakeFiles/RTX.dir/main.cpp.obj
   FLAGS = -g
   LINK_FLAGS = -static
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32

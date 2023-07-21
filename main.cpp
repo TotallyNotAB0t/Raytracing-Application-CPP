@@ -19,9 +19,7 @@
 #include "Carre.h"
 #include "Plan.h"
 #include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include "gopt.h"
+#include <cxxopts.hpp>
 
 void renderImage(Scene& scene, Camera& camera, int width, int height, std::vector<unsigned char>& image, int startY, int endY) 
 {
@@ -42,105 +40,36 @@ void renderImage(Scene& scene, Camera& camera, int width, int height, std::vecto
     }
 }
 
-//int main (int argc, char **argv)
-//{
-//    struct option options[5];
-//
-//    options[0].long_name  = "scene";
-//    options[0].short_name = 's';
-//    options[0].flags      = GOPT_ARGUMENT_REQUIRED;
-//
-//    options[1].long_name  = "height";
-//    options[1].short_name = 'h';
-//    options[1].flags      = GOPT_ARGUMENT_REQUIRED;
-//
-//    options[2].long_name  = "width";
-//    options[2].short_name = 'w';
-//    options[2].flags      = GOPT_ARGUMENT_REQUIRED;
-//
-//    options[3].long_name  = "output";
-//    options[3].short_name = 'o';
-//    options[3].flags      = GOPT_ARGUMENT_REQUIRED;
-//
-//    options[4].flags      = GOPT_LAST;
-//
-//    argc = gopt (argv, options);
-//
-//    gopt_errors (argv[0], options);
-//
-//    if (options[0].count)
-//    {
-//        std::cout << "MANAL" << std::endl;
-//        //fprintf (stdout, "see the manual\n");
-//        //exit (EXIT_SUCCESS);
-//    }
-//
-//    if (options[1].count)
-//    {
-//        fprintf (stdout, "version 1.0\n");
-//        //exit (EXIT_SUCCESS);
-//    }
-//
-//    if (options[2].count >= 1)
-//    {
-//        fputs ("being verbose\n", stderr);
-//    }
-//
-//    if (options[2].count >= 2)
-//    {
-//        fputs ("being very verbose\n", stderr);
-//    }
-//
-//    if (options[3].count) {
-//        std::cout << options[3].argument << std::endl;
-//    }
-//
-//    return 0;
-//}
-
 int main(int argc, char** argv) {
 
-    // Settings
-    std::string fileName = "myScene";
-    std::string outputFileName = "output";
-    int width = 500;
-    int height = 500;
+    cxxopts::Options options("RTX", "Arguments of the RTX project");
 
-    // Reading arguments if any
-    struct option options[6];
+    options.add_options()
+        ("s,scene", "The name of the scene to be loaded", cxxopts::value<std::string>()->default_value("myScene"))
+        ("o,output", "The name of the file to create", cxxopts::value<std::string>()->default_value("output"))
+        ("h,height", "The height of the image to create", cxxopts::value<int>()->default_value("500"))
+        ("w,width", "The width of the image to create", cxxopts::value<int>()->default_value("500"))
+        ("d,shadows", "Should the shadows in the scene be activated", cxxopts::value<bool>()->default_value("false"))
+        ("e,help", "Print the help")
+    ;
 
-    options[0].long_name  = "scene";
-    options[0].short_name = 's';
-    options[0].flags      = GOPT_ARGUMENT_REQUIRED;
+    auto result = options.parse(argc, argv);
 
-    options[1].long_name  = "height";
-    options[1].short_name = 'h';
-    options[1].flags      = GOPT_ARGUMENT_REQUIRED;
-
-    options[2].long_name  = "width";
-    options[2].short_name = 'w';
-    options[2].flags      = GOPT_ARGUMENT_REQUIRED;
-
-    options[3].long_name  = "output";
-    options[3].short_name = 'o';
-    options[3].flags      = GOPT_ARGUMENT_REQUIRED;
-
-    options[4].long_name  = "shadows";
-    options[4].short_name = 'd';
-    options[4].flags      = GOPT_ARGUMENT_FORBIDDEN;
-
-    options[5].flags      = GOPT_LAST;
-
-    gopt(argv, options);
-
-    gopt_errors(argv[0], options);
-
-    if (options[0].count)
+    if (result.count("help"))
     {
-        fileName = options[0].argument;
+        std::cout << options.help() << std::endl;
+        exit(0);
     }
 
+    // Argument parsing
+    std::string fileName = result["scene"].as<std::string>();
     fileName += ".txt";
+    std::string outputFileName = result["output"].as<std::string>();
+    outputFileName += ".jpg";
+    int width = result["width"].as<int>();
+    int height = result["height"].as<int>();
+
+    // Argument check
     std::ifstream file(fileName);
     if (!file.is_open()) {
         std::cerr << "Failed to open the file : " << fileName << ", opening myScene.txt instead." << std::endl;
@@ -148,41 +77,22 @@ int main(int argc, char** argv) {
         file.open("myScene.txt");
     }
 
-    if (options[1].count)
+    if (height <= 0)
     {
-        height = atoi(options[1].argument);
-        if (height <= 0)
-        {
-            std::cout << options[1].long_name << " argument is not correct. Defaulting to 500." << std::endl;
-            height = 500;
-        }
+        std::cerr << "height argument is not correct. Defaulting to 500." << std::endl;
+        height = 500;
     }
 
-    if (options[2].count)
+    if (width <= 0)
     {
-        width = atoi(options[2].argument);
-        if (width <= 0)
-        {
-            std::cout << options[2].long_name << " argument is not correct. Defaulting to 500." << std::endl;
-            width = 500;
-        }
+        std::cerr << "width argument is not correct. Defaulting to 500." << std::endl;
+        width = 500;
     }
-
-    if (options[3].count)
-    {
-        outputFileName = options[3].argument;
-    }
-    outputFileName += ".jpg";
-
-
 
     // Main loop
     Scene scene;
     scene.setBackground(Color(0.2, 0.2, 0.2));
-    if (options[4].count)
-    {
-        scene.shadows = true;
-    }
+    scene.shadows = result["shadows"].as<bool>();
 
     scene.setAmbiant(Color(0.1, 0.1, 0.1));
 
