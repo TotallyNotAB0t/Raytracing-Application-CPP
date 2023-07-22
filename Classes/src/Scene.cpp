@@ -125,8 +125,20 @@ bool Scene::GetShadow(const Point& impact, const Scene& scene, const Light& ligh
 
 Color Scene::getImpactColor(const Ray& ray, const Object& obj, const Point& impact, const Scene& scene)const{
     Material m = obj.getMaterial(impact);
+
+    // Checkboard pattern
+    int checkSize = .2; // Size of each checkboard square
+    int x = static_cast<int>(impact.x / checkSize);
+    int z = static_cast<int>(impact.z / checkSize);
+    Color kd;
+    if ((x + z) % 2 == 0) {
+        kd = m.kd; // Use the first diffusion color
+    } else {
+        kd = m.kd2; // Use the second diffusion color
+    }
+
     Ray normal = obj.getNormal(impact,ray.origin);
-    Color c = m.kd*0.3;
+    Color c = kd*0.3;
     for(int l = 0; l < scene.nbLights(); l++)
     {
         const Light* light = scene.getLight(l);

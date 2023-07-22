@@ -5,10 +5,14 @@
 
 class Triangle : public Object
 {
+private:
+    Point a; // First vertex of the triangle
+    Point b; // Second vertex of the triangle
+    Point c; // Third vertex of the triangle
+
 public:
-    Triangle() : Object() {};
-    Triangle(const Point& p);
-    Triangle(float x, float y, float z);
+    Triangle();
+    Triangle(const Point &v0, const Point &v1, const Point &v2);
     Triangle(const Material& mat) : Object(mat) {};
     ~Triangle();
 

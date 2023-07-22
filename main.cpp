@@ -150,10 +150,15 @@ int main(int argc, char** argv) {
                 myObject = new Sphere(materialMap[materialName]);
             } else if (objectType == "Cube") {
                 myObject = new Cube(materialMap[materialName]);
+            } else if (objectType == "Carre") {
+                myObject = new Carre(materialMap[materialName]);
             } else if (objectType == "Cylinder") {
                 myObject = new Cylinder(materialMap[materialName]);
             } else if (objectType == "Plan") {
                 myObject = new Plan(materialMap[materialName]);
+            } else if (objectType == "Triangle") {
+                myObject = new Triangle();
+                myObject->material = materialMap[materialName];
             } else {
                 std::cerr << "Unknown object type: " << objectType << std::endl;
                 continue;
@@ -162,10 +167,23 @@ int main(int argc, char** argv) {
             myObject->rotateX(params[3]);
             myObject->rotateY(params[4]);
             myObject->rotateZ(params[5]);
+            myObject->scale(params[6]);
             scene.addObject(myObject);
         }
     }
     file.close();
+
+    //Triangle* tri1 = new Triangle();
+    //tri1->material = materialMap["mat1"];
+    //tri1->translate(0, 0, 5);
+    //tri1->rotateX(180);
+    //tri1->rotateX(45);
+    //tri1->rotateZ(45);
+    //scene.addObject(tri1);
+
+/*    Sphere* sphe1 = new Sphere(materialMap["mat1"]);
+    sphe1->translate(1, 1, 1);
+    scene.addObject(sphe1);*/
 
     std::vector<unsigned char> image(width * height * 3);
 

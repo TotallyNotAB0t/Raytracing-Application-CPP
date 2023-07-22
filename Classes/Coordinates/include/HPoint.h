@@ -11,7 +11,6 @@ public:
     float y;
     float z;
     float w;
-
 public:
     HPoint();
     HPoint(float x, float y, float z, float w);

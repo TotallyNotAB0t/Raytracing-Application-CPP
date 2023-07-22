@@ -8,6 +8,7 @@ class Material
 public:
     Color ka;//ambiant
     Color kd;//diffusion
+    Color kd2;
     Color ks;//specular
     float shininess;
 

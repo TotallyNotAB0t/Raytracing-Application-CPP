@@ -9,6 +9,7 @@ public:
     Carre() : Object(){};
     Carre(const Material& mat) : Object(mat) {};
     ~Carre();
+
     bool intersect(const Ray& ray, Point& impact)const override;
 
     Ray getNormal(const Point &p, const Point &o) const;
