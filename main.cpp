@@ -94,6 +94,8 @@ int main(int argc, char** argv) {
 
     // Main loop
     Scene scene;
+    std::vector<std::unique_ptr<Object>> objects;
+    std::vector<std::unique_ptr<Light>> lights;
     scene.setBackground(Color(0.2, 0.2, 0.2));
     scene.shadows = result["shadows"].as<bool>();
     scene.checkboardMat = result["checkboard"].as<bool>();
@@ -132,10 +134,11 @@ int main(int argc, char** argv) {
                 std::cerr << "Failed to parse light from line: " << line << std::endl;
                 continue;
             }
-            Light* light = new Light(Point(params[0], params[1], params[2]),
-                                     Color(params[3], params[4], params[5]),
-                                     Color(params[6], params[7], params[8]));
-            scene.addLight(light);
+            auto light = std::make_unique<Light>(Point(params[0], params[1], params[2]),
+                                                 Color(params[3], params[4], params[5]),
+                                                 Color(params[6], params[7], params[8]));
+            scene.addLight(light.get());
+            lights.push_back(std::move(light));
         }
         // If the line is an object
         else {
@@ -172,6 +175,7 @@ int main(int argc, char** argv) {
             myObject->rotateY(params[4]);
             myObject->rotateZ(params[5]);
             myObject->scale(params[6]);
+            objects.push_back(std::unique_ptr<Object>(myObject));
             scene.addObject(myObject);
         }
     }
