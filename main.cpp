@@ -21,7 +21,7 @@
 #include <stdlib.h>
 #include <cxxopts.hpp>
 
-void renderImage(Scene& scene, Camera& camera, int width, int height, std::vector<unsigned char>& image, int startY, int endY) 
+void renderImage(Scene& scene, Camera& camera, int width, int height, std::vector<unsigned char>& image, int startY, int endY)
 {
     for (int y = startY; y < endY; ++y) 
     {
@@ -50,6 +50,7 @@ int main(int argc, char** argv) {
         ("h,height", "The height of the image to create", cxxopts::value<int>()->default_value("500"))
         ("w,width", "The width of the image to create", cxxopts::value<int>()->default_value("500"))
         ("d,shadows", "Should the shadows in the scene be activated", cxxopts::value<bool>()->default_value("false"))
+        ("x,checkboard", "Should we use a checkboard material", cxxopts::value<bool>()->default_value("false"))
         ("e,help", "Print the help")
     ;
 
@@ -93,6 +94,7 @@ int main(int argc, char** argv) {
     Scene scene;
     scene.setBackground(Color(0.2, 0.2, 0.2));
     scene.shadows = result["shadows"].as<bool>();
+    scene.checkboardMat = result["checkboard"].as<bool>();
 
     scene.setAmbiant(Color(0.1, 0.1, 0.1));
 
