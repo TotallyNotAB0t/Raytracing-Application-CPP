@@ -69,3 +69,9 @@ Cube::~Cube()
 {
 
 }
+
+Cube::Cube(const Cube &cube) {
+    this->trans = cube.trans;
+    this->transInv = cube.transInv;
+    this->material = cube.material;
+}

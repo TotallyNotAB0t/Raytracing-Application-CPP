@@ -13,6 +13,7 @@ private:
 public:
     Triangle();
     Triangle(const Point &v0, const Point &v1, const Point &v2);
+    Triangle(const Triangle& triangle);
     Triangle(const Material& mat) : Object(mat) {};
     ~Triangle();
 

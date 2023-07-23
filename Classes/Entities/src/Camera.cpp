@@ -33,3 +33,7 @@ Camera::~Camera()
 {
 
 }
+
+Camera::Camera(const Camera &camera) {
+    this->focal = camera.focal;
+}

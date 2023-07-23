@@ -6,6 +6,7 @@ class Color
 {
 public:
     Color();
+    Color(const Color& color);
     Color(float r, float g, float b);
     ~Color();
 

@@ -71,3 +71,9 @@ Sphere::Sphere(float x, float y, float z)
     trans = Matrix();
     translate(x, y, z);
 }
+
+Sphere::Sphere(const Sphere &sphere) {
+    this->trans = sphere.trans;
+    this->transInv = sphere.transInv;
+    this->material = sphere.material;
+}

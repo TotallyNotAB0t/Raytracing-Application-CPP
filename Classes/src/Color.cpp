@@ -119,3 +119,9 @@ Color Color::mul(const float c) const
 {
     return Color(r * c, g * c, b * c);
 }
+
+Color::Color(const Color &color) {
+    this->r = color.r;
+    this->g = color.g;
+    this->b = color.b;
+}

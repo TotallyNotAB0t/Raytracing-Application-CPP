@@ -13,7 +13,9 @@ public:
     float shininess;
 
     Material();
+    Material(const Material& material);
     Material(const Color& ka, const Color& kd, const Color& ks, float shininess);
+    ~Material();
 };
 
 #endif //RTX_MATERIAL_H

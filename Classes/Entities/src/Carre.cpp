@@ -47,3 +47,9 @@ Carre::~Carre()
 {
 
 }
+
+Carre::Carre(const Carre &carre) {
+    this->trans = carre.trans;
+    this->transInv = carre.transInv;
+    this->material = carre.material;
+}

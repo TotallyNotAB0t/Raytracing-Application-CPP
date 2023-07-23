@@ -7,6 +7,7 @@ class Sphere : public Object
 {
 public:
     Sphere() : Object(){};
+    Sphere(const Sphere& sphere);
     Sphere(const Point& p);
     Sphere(float x, float y, float z);
     Sphere(const Material& mat) : Object(mat) {};

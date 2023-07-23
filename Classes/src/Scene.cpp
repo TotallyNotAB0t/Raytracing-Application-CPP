@@ -127,18 +127,20 @@ Color Scene::getImpactColor(const Ray& ray, const Object& obj, const Point& impa
     Material m = obj.getMaterial(impact);
 
     // Checkboard pattern
-    int checkSize = .2; // Size of each checkboard square
+    int checkSize = 1; // Size of each checkboard square
     int x = static_cast<int>(impact.x / checkSize);
     int z = static_cast<int>(impact.z / checkSize);
-    Color kd;
-    if ((x + z) % 2 == 0) {
-        kd = m.kd; // Use the first diffusion color
-    } else {
-        kd = m.kd2; // Use the second diffusion color
+    Color colorPicked = m.kd;
+    if (checkboardMat){
+        if ((x + z) % 2 == 0) {
+            colorPicked = m.kd; // Use the first diffusion color
+        } else {
+            colorPicked = m.kd2; // Use the second diffusion color
+        }
     }
 
     Ray normal = obj.getNormal(impact,ray.origin);
-    Color c = kd*0.3;
+    Color c = colorPicked*0.3;
     for(int l = 0; l < scene.nbLights(); l++)
     {
         const Light* light = scene.getLight(l);
@@ -147,7 +149,7 @@ Color Scene::getImpactColor(const Ray& ray, const Object& obj, const Point& impa
             float alpha = lv.dot(normal.vector);
             if(alpha>0)
             {
-                c += (light->id).mul(m.kd) * alpha;
+                c += (light->id).mul(colorPicked) * alpha;
             }
             Vector rm = (2*lv.dot(normal.vector)*normal.vector) - lv;
 
@@ -164,4 +166,11 @@ Color Scene::getImpactColor(const Ray& ray, const Object& obj, const Point& impa
                         std::clamp(c[2], 0.0f, 1.0f));
     return color;
 
+}
+
+Scene::Scene(const Scene &scene) {
+    this->objects = scene.objects;
+    this->lights = scene.lights;
+    this->ambiant = scene.ambiant;
+    this->background = scene.background;
 }

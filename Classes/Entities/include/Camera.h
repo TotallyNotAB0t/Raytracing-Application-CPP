@@ -8,6 +8,7 @@ class Camera : public Entity
 public:
     float focal;
     Camera(float focal = 1.0f);
+    Camera(const Camera& camera);
     virtual ~Camera();
 
     Ray getRay(float x, float y) const;

@@ -11,6 +11,7 @@ public:
     Color is;
 
     Light();
+    Light(const Light& light);
     Light(const Point& p, const Color& id, const Color& is);
 
     Ray getRayToLight(const Point& p) const;

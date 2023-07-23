@@ -63,3 +63,9 @@ Plan::Plan(float x, float y, float z)
     trans = Matrix();
     translate(x, y, z);
 }
+
+Plan::Plan(const Plan &plan) {
+    this->trans = plan.trans;
+    this->transInv = plan.transInv;
+    this->material = plan.material;
+}

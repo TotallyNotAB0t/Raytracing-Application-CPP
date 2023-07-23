@@ -52,3 +52,10 @@ Point Cylinder::getTextureCoordinates(const Point &p) const {
 Cylinder::~Cylinder() {
 
 }
+
+Cylinder::Cylinder(const Cylinder &cylinder) {
+    this->trans = cylinder.trans;
+    this->transInv = cylinder.transInv;
+    this->material = cylinder.material;
+
+}

@@ -42,3 +42,10 @@ Vector Light::getVectorFromLight(const Point& p) const
     Vector vectorLocal = pLocal - originLocal;
     return vectorLocal.normalized();
 }
+
+Light::Light(const Light &light) {
+    this->trans = light.trans;
+    this->transInv = light.transInv;
+    this->id = light.id;
+    this->is = light.is;
+}

@@ -9,8 +9,10 @@
 class Scene 
 {
 public:
+    bool checkboardMat;
     bool shadows;
     Scene();
+    Scene(const Scene& scene);
     Scene(const Color &background, const Color &ambiant);
     ~Scene();
 

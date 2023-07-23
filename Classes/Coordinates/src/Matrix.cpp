@@ -50,7 +50,9 @@ Matrix::Matrix(const Matrix& other)
     }
 }
 
-Matrix::~Matrix() {}
+Matrix::~Matrix() {
+
+}
 
 float Matrix::operator()(int i, int j) const
 {
