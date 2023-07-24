@@ -21,11 +21,11 @@
 #include <stdlib.h>
 #include <cxxopts.hpp>
 
-void renderImage(Scene& scene, Camera& camera, int width, int height, std::vector<unsigned char>& image, int startY, int endY)
+void renderImage(Scene& scene, Camera& camera, int width, int height, std::vector<unsigned char>& image, int startY, int endY, int threadID, std::vector<int>& tab)
 {
-    for (int y = startY; y < endY; ++y) 
+    for (int y = startY; y < endY; ++y)
     {
-        for (int x = 0; x < width; ++x) 
+        for (int x = 0; x < width; ++x)
         {
             float u = (float)x / (float)width;
             float v = (float)y / (float)height;
@@ -36,6 +36,7 @@ void renderImage(Scene& scene, Camera& camera, int width, int height, std::vecto
             image[index] = colorToPrint[0] * 255.0f;
             image[index + 1] = colorToPrint[1] * 255.0f;
             image[index + 2] = colorToPrint[2] * 255.0f;
+            tab[threadID]++;
         }
     }
 }
@@ -175,28 +176,28 @@ int main(int argc, char** argv) {
     }
     file.close();
 
-    //Triangle* tri1 = new Triangle();
-    //tri1->material = materialMap["mat1"];
-    //tri1->translate(0, 0, 5);
-    //tri1->rotateX(180);
-    //tri1->rotateX(45);
-    //tri1->rotateZ(45);
-    //scene.addObject(tri1);
-
-/*    Sphere* sphe1 = new Sphere(materialMap["mat1"]);
-    sphe1->translate(1, 1, 1);
-    scene.addObject(sphe1);*/
-
     std::vector<unsigned char> image(width * height * 3);
 
     int numThreads = std::thread::hardware_concurrency();
+    std::vector<int> finishedPercentage;
     std::vector<std::thread> threads(numThreads);
 
     for (int i = 0; i < numThreads; ++i)
     {
         int startY = (height / numThreads) * i;
         int endY = (i == numThreads - 1) ? height : (height / numThreads) * (i + 1);
-        threads[i] = std::thread(renderImage, std::ref(scene), std::ref(camera), width, height, std::ref(image), startY, endY);
+        int threadID = i;
+        finishedPercentage.push_back(1);
+        threads[i] = std::thread(renderImage, std::ref(scene), std::ref(camera), width, height, std::ref(image), startY, endY, threadID, std::ref(finishedPercentage));
+    }
+    int globalFinishedPercent = 0;
+    while (globalFinishedPercent <= (width * height))
+    {
+        globalFinishedPercent = 0;
+        for (int i = 0; i < finishedPercentage.size(); ++i) {
+            globalFinishedPercent += finishedPercentage[i];
+        }
+        std::cout << "Percentage : " << ((float)globalFinishedPercent / (width * height)) * 100 << '%' << std::endl;
     }
 
     for (auto& thread : threads)
