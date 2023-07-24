@@ -3,11 +3,12 @@
 
 #include "Object.h"
 
-class Cube : public Object 
+class Cube : public Object
 {
 public:
     Cube() : Object(){};
     Cube(const Material& mat) : Object(mat) {};
+    Cube(const Cube& cube);
     ~Cube();
     float interSide(const Ray &r, int dim, float offset) const;
     bool intersect(const Ray &ray, Point &impact) const override;

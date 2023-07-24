@@ -44,3 +44,15 @@
 8763	15908	7118870099622004	RTX.exe	4e56dd62cffbb057
 4	7666	7118871460761550	CMakeFiles/RTX.dir/main.cpp.obj	9f41c515f84298b3
 7666	15238	7118871536591571	RTX.exe	4e56dd62cffbb057
+21	1172	7118876495233833	CMakeFiles/RTX.dir/Classes/Entities/src/Light.cpp.obj	90a7045b6e53471b
+13	1176	7118876495264328	CMakeFiles/RTX.dir/Classes/Entities/src/Cube.cpp.obj	9db207202c10b08e
+5	1181	7118876495344726	CMakeFiles/RTX.dir/Classes/Entities/src/Carre.cpp.obj	30470b4c690b4211
+28	1203	7118876495584706	CMakeFiles/RTX.dir/Classes/Entities/src/Cylinder.cpp.obj	296da542427dc11
+68	1601	7118876499558164	CMakeFiles/RTX.dir/Classes/src/Scene.cpp.obj	6db2cc5a82d2b269
+45	8352	7118876566951687	CMakeFiles/RTX.dir/main.cpp.obj	9f41c515f84298b3
+8352	16520	7118876648687686	RTX.exe	4e56dd62cffbb057
+11	715	7118877796588581	CMakeFiles/RTX.dir/Classes/Entities/src/Sphere.cpp.obj	d7adff4804ca197a
+19	763	7118877797068812	CMakeFiles/RTX.dir/Classes/Entities/src/Triangle.cpp.obj	64fc1236b646c889
+5	770	7118877797128784	CMakeFiles/RTX.dir/Classes/Entities/src/Plan.cpp.obj	e979e5c74c353f5
+24	7736	7118877866676540	CMakeFiles/RTX.dir/main.cpp.obj	9f41c515f84298b3
+7736	15335	7118877942698732	RTX.exe	4e56dd62cffbb057

@@ -106,3 +106,12 @@ Triangle::Triangle(const Point& v0, const Point& v1, const Point& v2)
     this->b = v1;
     this->c = v2;
 }
+
+Triangle::Triangle(const Triangle &triangle) {
+    this->trans = triangle.trans;
+    this->transInv = triangle.transInv;
+    this->material = triangle.material;
+    this->a = triangle.a;
+    this->b = triangle.b;
+    this->c = triangle.c;
+}

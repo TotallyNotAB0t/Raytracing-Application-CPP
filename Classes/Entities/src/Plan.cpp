@@ -38,9 +38,9 @@ Point Plan::getTextureCoordinates(const Point& p) const
     {
         x += 1;
     }
-    if (y < 0) 
-    { 
-        y += 1; 
+    if (y < 0)
+    {
+        y += 1;
     }
 
     return Point(x,y,0);
@@ -62,4 +62,10 @@ Plan::Plan(float x, float y, float z)
 {
     trans = Matrix();
     translate(x, y, z);
+}
+
+Plan::Plan(const Plan &plan) {
+    this->trans = plan.trans;
+    this->transInv = plan.transInv;
+    this->material = plan.material;
 }

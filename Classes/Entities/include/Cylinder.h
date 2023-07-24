@@ -3,11 +3,12 @@
 
 #include "Object.h"
 
-class Cylinder : public Object 
+class Cylinder : public Object
 {
 public:
     Cylinder() : Object() {};
     Cylinder(const Material& mat) : Object(mat) {};
+    Cylinder(const Cylinder& cylinder);
     ~Cylinder();
 
     Point getTextureCoordinates(const Point& p) const override;

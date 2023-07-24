@@ -3,13 +3,14 @@
 
 #include "Object.h"
 
-class Plan : public Object 
+class Plan : public Object
 {
 public:
     Plan() : Object() {};
     Plan(const Point& p);
     Plan(float x, float y, float z);
     Plan(const Material& mat) : Object(mat) {};
+    Plan(const Plan& plan);
     ~Plan();
 
     bool intersect(const Ray& ray, Point& impact) const override;

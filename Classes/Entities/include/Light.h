@@ -4,13 +4,14 @@
 #include "Entity.h"
 #include "Color.h"
 
-class Light : public Entity 
+class Light : public Entity
 {
 public:
     Color id;
     Color is;
 
     Light();
+    Light(const Light& light);
     Light(const Point& p, const Color& id, const Color& is);
 
     Ray getRayToLight(const Point& p) const;

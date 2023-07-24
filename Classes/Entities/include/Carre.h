@@ -3,11 +3,12 @@
 
 #include "Object.h"
 
-class Carre : public Object 
+class Carre : public Object
 {
 public:
     Carre() : Object(){};
     Carre(const Material& mat) : Object(mat) {};
+    Carre(const Carre& carre);
     ~Carre();
 
     bool intersect(const Ray& ray, Point& impact)const override;

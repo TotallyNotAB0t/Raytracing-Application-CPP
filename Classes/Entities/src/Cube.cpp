@@ -65,7 +65,13 @@ Point Cube::getTextureCoordinates(const Point& p) const
     return Point(0,0,0);
 }
 
-Cube::~Cube() 
+Cube::~Cube()
 {
 
+}
+
+Cube::Cube(const Cube &cube) {
+    this->trans = cube.trans;
+    this->transInv = cube.transInv;
+    this->material = cube.material;
 }
