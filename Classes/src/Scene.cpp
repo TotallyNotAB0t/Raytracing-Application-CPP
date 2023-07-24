@@ -1,7 +1,7 @@
 #include <algorithm>
 #include "Scene.h"
 
-Scene::Scene() 
+Scene::Scene()
 {
     background = Color(0, 0, 0);
     ambiant = Color(0, 0, 0);
@@ -9,54 +9,54 @@ Scene::Scene()
 
 Scene::Scene(const Color& background, const Color& ambiant) : background(background), ambiant(ambiant) {}
 
-Scene::~Scene() 
+Scene::~Scene()
 {
-    for (Object* o : objects) 
+    for (Object* o : objects)
     {
         delete o;
     }
-    for (Light* l : lights) 
+    for (Light* l : lights)
     {
         delete l;
     }
 }
 
-void Scene::setBackground(const Color& c) 
+void Scene::setBackground(const Color& c)
 {
     background = c;
 }
 
-void Scene::setAmbiant(const Color& c) 
+void Scene::setAmbiant(const Color& c)
 {
     ambiant = c;
 }
 
-void Scene::addObject(Object* o) 
+void Scene::addObject(Object* o)
 {
     objects.push_back(o);
 }
 
-void Scene::addLight(Light* l) 
+void Scene::addLight(Light* l)
 {
     lights.push_back(l);
 }
 
-Color Scene::getBackground() const 
+Color Scene::getBackground() const
 {
     return background;
 }
 
-Color Scene::getAmbiant() const 
+Color Scene::getAmbiant() const
 {
     return ambiant;
 }
 
-int Scene::nbLights() const 
+int Scene::nbLights() const
 {
     return lights.size();
 }
 
-const Light* Scene::getLight(int index) const 
+const Light* Scene::getLight(int index) const
 {
     return lights[index];
 }
@@ -71,7 +71,7 @@ const Object* Scene::getObject(int index) const
     return objects[index];
 }
 
-Color Scene::renderScene(const Ray& ray, Point& impact) const 
+Color Scene::renderScene(const Ray& ray, Point& impact) const
 {
 
     Color color = getBackground();
@@ -101,25 +101,25 @@ bool Scene::GetShadow(const Point& impact, const Scene& scene, const Light& ligh
         return false;
     }
     bool inShadow = false;
-        Ray r = light.getRayFromLight(impact);
-        for (int j = 0; j < scene.nbObject(); j++)
+    Ray r = light.getRayFromLight(impact);
+    for (int j = 0; j < scene.nbObject(); j++)
+    {
+        const Object* obj = scene.getObject(j);
+        Point p;
+        if (obj->intersect(r, p))
         {
-            const Object* obj = scene.getObject(j);
-            Point p;
-            if (obj->intersect(r, p))
-            {
-                // Check if the intersection point is between the impact point and the light source
-                Vector lightDirection = impact - r.origin;
-                Vector impactToIntersection = p - r.origin;
+            // Check if the intersection point is between the impact point and the light source
+            Vector lightDirection = impact - r.origin;
+            Vector impactToIntersection = p - r.origin;
 
-                // If the intersection is closer to the impact point than the light source, it is in shadow
-                if(impactToIntersection.vlength() < lightDirection.vlength()-0.01)
-                {
-                    inShadow = true;
-                    break;
-                }
+            // If the intersection is closer to the impact point than the light source, it is in shadow
+            if(impactToIntersection.vlength() < lightDirection.vlength()-0.01)
+            {
+                inShadow = true;
+                break;
             }
         }
+    }
     return inShadow;
 }
 
@@ -166,4 +166,11 @@ Color Scene::getImpactColor(const Ray& ray, const Object& obj, const Point& impa
                         std::clamp(c[2], 0.0f, 1.0f));
     return color;
 
+}
+
+Scene::Scene(const Scene &scene) {
+    this->objects = scene.objects;
+    this->lights = scene.lights;
+    this->ambiant = scene.ambiant;
+    this->background = scene.background;
 }

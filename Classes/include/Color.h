@@ -2,10 +2,11 @@
 #define RTX_COLOR_H
 #include <iostream>
 
-class Color 
+class Color
 {
 public:
     Color();
+    Color(const Color& color);
     Color(float r, float g, float b);
     ~Color();
 

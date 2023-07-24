@@ -6,12 +6,13 @@
 #include "Object.h"
 #include "Light.h"
 
-class Scene 
+class Scene
 {
 public:
     bool checkboardMat;
     bool shadows;
     Scene();
+    Scene(const Scene& scene);
     Scene(const Color &background, const Color &ambiant);
     ~Scene();
 
