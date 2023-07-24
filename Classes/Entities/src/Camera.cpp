@@ -1,6 +1,6 @@
 #include "Camera.h"
 
-Ray Camera::getRay(float x, float y) const 
+Ray Camera::getRay(float x, float y) const
 {
     Ray r(-(-1.0f+2.0f*x),-1.0f+2.0f*y,0,0,0,0);
     Point foc(0,0,focal);
@@ -11,7 +11,7 @@ Ray Camera::getRay(float x, float y) const
     return r.normalized();
 }
 
-Camera::Camera(float focal) 
+Camera::Camera(float focal)
 {
     this->focal = focal;
 }
@@ -29,7 +29,11 @@ void Camera::rotateY(float deg)
     transInv=trans.inverse();
 }
 
-Camera::~Camera() 
+Camera::~Camera()
 {
 
+}
+
+Camera::Camera(const Camera &camera) {
+    this->focal = camera.focal;
 }
