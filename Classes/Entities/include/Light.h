@@ -4,7 +4,7 @@
 #include "Entity.h"
 #include "Color.h"
 
-class Light : public Entity 
+class Light : public Entity
 {
 public:
     Color id;

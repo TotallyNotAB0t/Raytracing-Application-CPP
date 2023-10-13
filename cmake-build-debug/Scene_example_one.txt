@@ -1,0 +1,11 @@
+Material mat1 1 0 0 0.8 0 0 1 1 1 50
+Material mat2 0 1 0 0 1 0 0 1 0 30
+Material mat3 0 0 1 0 0 1 0 0 1 45
+Material whiteMat 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 50
+Light -1 2 -1 1 1 1 1 1 1
+Sphere mat1 -3 0 0 0 0 0 1
+Cube mat2 0 3 0 45 45 45 1
+Cylinder mat3 3 62 0 25 25 0 5
+Triangle mat1 -2 2 1 60 45 0 2
+Carre mat2 2 0 1 -60 -20 0 1
+Plan whiteMat 0 -2 0 -90 0 0 1

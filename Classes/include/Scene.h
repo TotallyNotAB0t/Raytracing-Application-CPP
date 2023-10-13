@@ -6,7 +6,7 @@
 #include "Object.h"
 #include "Light.h"
 
-class Scene 
+class Scene
 {
 public:
     bool checkboardMat;

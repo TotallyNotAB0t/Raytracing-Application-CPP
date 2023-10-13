@@ -3,7 +3,7 @@
 
 #include "Object.h"
 
-class Plan : public Object 
+class Plan : public Object
 {
 public:
     Plan() : Object() {};

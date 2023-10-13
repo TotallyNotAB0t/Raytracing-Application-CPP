@@ -3,7 +3,7 @@
 
 #include "Object.h"
 
-class Sphere : public Object 
+class Sphere : public Object
 {
 public:
     Sphere() : Object(){};

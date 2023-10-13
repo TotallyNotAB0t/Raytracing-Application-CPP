@@ -3,7 +3,7 @@
 
 #include "Entity.h"
 
-class Camera : public Entity 
+class Camera : public Entity
 {
 public:
     float focal;

@@ -3,7 +3,7 @@
 
 #include "Object.h"
 
-class Carre : public Object 
+class Carre : public Object
 {
 public:
     Carre() : Object(){};

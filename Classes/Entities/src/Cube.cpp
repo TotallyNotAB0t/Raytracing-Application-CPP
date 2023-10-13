@@ -65,7 +65,7 @@ Point Cube::getTextureCoordinates(const Point& p) const
     return Point(0,0,0);
 }
 
-Cube::~Cube() 
+Cube::~Cube()
 {
 
 }

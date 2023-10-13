@@ -2,7 +2,7 @@
 #define RTX_COLOR_H
 #include <iostream>
 
-class Color 
+class Color
 {
 public:
     Color();

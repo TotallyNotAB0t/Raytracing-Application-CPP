@@ -1,6 +1,6 @@
 #include "Carre.h"
 
-bool Carre::intersect(const Ray &ray, Point &impact) const 
+bool Carre::intersect(const Ray &ray, Point &impact) const
 {
     Ray lr = globalToLocal(ray).normalized();
     if (lr.vector[2]<0.0001 && lr.vector[2]>-0.0001)

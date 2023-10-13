@@ -3,7 +3,7 @@
 
 #include "Object.h"
 
-class Cube : public Object 
+class Cube : public Object
 {
 public:
     Cube() : Object(){};

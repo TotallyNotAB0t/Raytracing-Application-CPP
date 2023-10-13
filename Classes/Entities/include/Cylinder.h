@@ -3,7 +3,7 @@
 
 #include "Object.h"
 
-class Cylinder : public Object 
+class Cylinder : public Object
 {
 public:
     Cylinder() : Object() {};

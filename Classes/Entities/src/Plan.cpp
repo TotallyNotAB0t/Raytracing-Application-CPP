@@ -38,9 +38,9 @@ Point Plan::getTextureCoordinates(const Point& p) const
     {
         x += 1;
     }
-    if (y < 0) 
-    { 
-        y += 1; 
+    if (y < 0)
+    {
+        y += 1;
     }
 
     return Point(x,y,0);

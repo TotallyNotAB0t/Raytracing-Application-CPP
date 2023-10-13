@@ -24,9 +24,9 @@
 
 void renderImage(Scene& scene, Camera& camera, int width, int height, std::vector<unsigned char>& image, int startY, int endY, int threadID, std::vector<int>& tab)
 {
-    for (int y = startY; y < endY; ++y) 
+    for (int y = startY; y < endY; ++y)
     {
-        for (int x = 0; x < width; ++x) 
+        for (int x = 0; x < width; ++x)
         {
             float u = (float)x / (float)width;
             float v = (float)y / (float)height;

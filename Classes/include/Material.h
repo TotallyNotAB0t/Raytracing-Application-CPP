@@ -3,7 +3,7 @@
 
 #include "Color.h"
 
-class Material 
+class Material
 {
 public:
     Color ka;//ambiant
@@ -13,8 +13,8 @@ public:
     float shininess;
 
     Material();
-    Material(const Material& material);
     Material(const Color& ka, const Color& kd, const Color& ks, float shininess);
+    Material(const Material& mat);
     ~Material();
 };
 
